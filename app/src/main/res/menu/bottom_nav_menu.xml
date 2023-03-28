@@ -9,11 +9,11 @@
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/notabiografica"
-        android:title="@string/nota_biografica" />
+        android:title="@string/title_biography" />
 
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/mapa"
-        android:title="@string/mapa" />
+        android:title="@string/title_map" />
 
 </menu>

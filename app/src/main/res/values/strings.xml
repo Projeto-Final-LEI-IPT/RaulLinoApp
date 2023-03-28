@@ -2,7 +2,6 @@
     <string name="app_name">RaulLino</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="mapa">Mapa</string>
-    <string name="nota_biografica">Nota Biográfica</string>
+    <string name="title_map">Mapa</string>
+    <string name="title_biography">Nota Biográfica</string>
 </resources>
