@@ -35,15 +35,9 @@ class MapFragment : Fragment() {
         mapView.controller.setZoom(12.0)
         mapView.controller.setCenter(GeoPoint(39.4666700, -8.2000000))
 
-        // A funcionar não mexer
-        //val mLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(context), mapView)
-        //mLocationOverlay.enableMyLocation()
-        //mapView.getOverlays().add(mLocationOverlay)
-
-
-        val myLocationoverlay = MyLocationNewOverlay(mapView)
-        myLocationoverlay.enableMyLocation()
-        mapView.overlays.add(myLocationoverlay)
+        val mLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(context), mapView)
+        mLocationOverlay.enableMyLocation()
+        mapView.getOverlays().add(mLocationOverlay)
 
         // Check for location permission
         val permissions = arrayOf(
