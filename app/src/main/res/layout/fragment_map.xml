@@ -8,16 +8,20 @@ tools:context=".ui.home.HomeFragment">
 
     <include
         android:id="@+id/include"
-        layout="@layout/header_menu"/>
+        layout="@layout/header_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <org.osmdroid.views.MapView
         android:id="@+id/map_view"
-        android:layout_width="354dp"
-        android:layout_height="574dp"
-        app:layout_constraintBottom_toBottomOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toTopOf="@+id/include"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="362dp"
+        android:layout_height="563dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
