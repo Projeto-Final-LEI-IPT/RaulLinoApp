@@ -22,7 +22,7 @@
         android:layout_height="135dp"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/fira_sans"
-        android:text="Também é importante referir que apesar do seu leque obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal"
+        android:text="@string/text_home"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -37,7 +37,7 @@
         android:layout_height="138dp"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/fira_sans"
-        android:text="Também é importante referir que apesar do seu leque obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal"
+        android:text="@string/text_home"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -56,7 +56,8 @@
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.539"
+        android:contentDescription="@string/home_vertical" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -68,7 +69,8 @@
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintVertical_bias="0.843"
+        android:contentDescription="@string/home_janela" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -80,7 +82,8 @@
         app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.253"
+        android:contentDescription="@string/home_arco" />
 
     <TextView
         android:id="@+id/textView"
@@ -88,7 +91,7 @@
         android:layout_height="136dp"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/fira_sans"
-        android:text="Também é importante referir que apesar do seu leque obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal"
+        android:text="@string/text_home"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -103,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/fira_sans"
-        android:text="O INÍCIO"
+        android:text="@string/title_text_home"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
