@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -44,6 +45,29 @@ class MapFragment : Fragment() {
             Manifest.permission.ACCESS_COARSE_LOCATION
         )
         requestPermissionsIfNecessary(permissions)
+
+        // Add touch listener to limit map view area
+        val initialLocation = GeoPoint(39.4666700, -8.2000000)
+        val maxLat = initialLocation.latitude + 0.01
+        val minLat = initialLocation.latitude - 0.01
+        val maxLon = initialLocation.longitude + 0.01
+        val minLon = initialLocation.longitude - 0.01
+        val mapTouchListener = View.OnTouchListener {_, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                val center = mapView.mapCenter
+                val lat = center.latitude
+                val lon = center.longitude
+                if (lat > maxLat || lat < minLat || lon > maxLon || lon < minLon) {
+                    mapView.controller.animateTo(GeoPoint(39.4666700, -8.2000000))
+                    return@OnTouchListener true
+                }
+            }
+            false
+        }
+        mapView.setOnTouchListener(mapTouchListener)
+
+
+
 
         return view
     }
