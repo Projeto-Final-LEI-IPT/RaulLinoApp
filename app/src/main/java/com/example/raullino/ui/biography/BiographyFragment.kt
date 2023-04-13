@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.raullino.MainActivity
 import com.example.raullino.databinding.FragmentBiographyBinding
+import com.example.raullino.JsonParse
 
 class BiographyFragment : Fragment() {
 
@@ -32,6 +34,13 @@ class BiographyFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        val main = activity as MainActivity
+        val t = JsonParse(main)
+        print("\nTesting the json file\n")
+        print(t.get_number())
+        print("\nEnd\n")
+
         return root
     }
 
