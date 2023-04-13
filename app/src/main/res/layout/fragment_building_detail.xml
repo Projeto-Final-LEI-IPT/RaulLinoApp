@@ -6,43 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.buildingDetail.BuildingDetailFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="127dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="258dp"
-        android:layout_marginBottom="44dp"
-        android:contentDescription="@string/home_arco"
-        android:src="@drawable/arco"
-        app:layout_constraintBottom_toTopOf="@+id/textInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.398"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422" />
 
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginTop="148dp"
         android:fontFamily="@font/raul_lino_fonte"
         android:text="Title"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textInfo"
-        android:layout_width="295dp"
-        android:layout_height="128dp"
-        android:layout_marginBottom="170dp"
+        android:layout_width="356dp"
+        android:layout_height="214dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="88dp"
         android:fontFamily="@font/fira_sans"
         android:text="Info"
         android:textColor="#000000"
@@ -50,7 +37,20 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitle"
+        app:layout_constraintVertical_bias="0.891" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/arco"
+        app:layout_constraintBottom_toTopOf="@+id/textInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
