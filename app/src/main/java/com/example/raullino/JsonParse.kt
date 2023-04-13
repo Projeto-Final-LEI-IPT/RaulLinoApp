@@ -19,7 +19,7 @@ Lista de métodos:
     jsonParser.get_info(id)             - Informação acerca do edificio
     jsonParser.get_image(id)            - Caminho das imagens dos edificios
  */
-class jsonParse(val context: Context) {
+class JsonParse(val context: Context) {
 
     //Função que calcula o número de objetos no ficheiro json dentro do array "dados"
     //Retorna Inteiro
