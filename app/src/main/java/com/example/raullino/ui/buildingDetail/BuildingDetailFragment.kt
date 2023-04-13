@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.raullino.R
+import com.example.raullino.JsonParse
 import com.example.raullino.databinding.FragmentBuildingDetailBinding
-import com.example.raullino.jsonParse
 
 class BuildingDetailFragment : Fragment() {
 
@@ -27,15 +25,17 @@ class BuildingDetailFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        val buildingDetailViewModel =
-                ViewModelProvider(this).get(BuildingDetailViewModel::class.java)
-
-        val t = jsonParse(requireContext())
-
-        t.get_title(1);
 
         _binding = FragmentBuildingDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val jsonParse = JsonParse(requireContext())
+
+        textTitle = binding.textTitle
+        textInfo = binding.textInfo
+
+        textTitle.text = jsonParse.get_title(1);
+        textInfo.text = jsonParse.get_info(1);
 
         return root
     }
