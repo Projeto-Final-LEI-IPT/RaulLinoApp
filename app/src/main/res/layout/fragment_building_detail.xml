@@ -3,14 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.buildingDetail.BuildingDetailFragment">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/header_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:visibility="visible"
+        android:layout_marginTop="103dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
-                android:layout_marginTop="148dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/raul_lino_fonte"
                 android:text="Title"
                 android:textColor="#000000"
@@ -31,17 +47,25 @@
 
             <TextView
                 android:id="@+id/textInfo"
-                android:layout_width="356dp"
-                android:layout_height="387dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="88dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="25dp"
                 android:fontFamily="@font/fira_sans"
                 android:text="Info"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/arco" />
+
 
         </LinearLayout>
     </ScrollView>

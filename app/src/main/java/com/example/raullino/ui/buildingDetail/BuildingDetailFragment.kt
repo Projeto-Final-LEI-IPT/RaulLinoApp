@@ -34,8 +34,8 @@ class BuildingDetailFragment : Fragment() {
         textTitle = binding.textTitle
         textInfo = binding.textInfo
 
-        textTitle.text = jsonParse.get_title(1);
-        textInfo.text = jsonParse.get_info(1);
+        textTitle.text = jsonParse.get_title(3);
+        textInfo.text = jsonParse.get_info(3);
 
         return root
     }
