@@ -49,7 +49,7 @@ class MapFragment : Fragment() {
         requestPermissionsIfNecessary(permissions)
 
         // Add touch listener to limit map view area
-        val initialLocation = GeoPoint(39.4666700, -8.2000000)
+        val initialLocation = GeoPoint(39.461563, -8.197074)
         val maxLat = initialLocation.latitude + 0.01
         val minLat = initialLocation.latitude - 0.01
         val maxLon = initialLocation.longitude + 0.01
