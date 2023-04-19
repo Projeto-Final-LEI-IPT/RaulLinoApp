@@ -50,16 +50,16 @@ class MapFragment : Fragment() {
 
         // Add touch listener to limit map view area
         val initialLocation = GeoPoint(39.461563, -8.197074)
-        val maxLat = initialLocation.latitude + 0.01
-        val minLat = initialLocation.latitude - 0.01
-        val maxLon = initialLocation.longitude + 0.01
-        val minLon = initialLocation.longitude - 0.01
+        val maxLat = initialLocation.latitude + 0.08
+        val minLat = initialLocation.latitude - 0.08
+        val maxLon = initialLocation.longitude + 0.08
+        val minLon = initialLocation.longitude - 0.08
         val mapTouchListener = View.OnTouchListener {_, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 val center = mapView.mapCenter
                 val lat = center.latitude
                 val lon = center.longitude
-                if (mapView.zoomLevel<14.0){
+                if (mapView.zoomLevel<13.0){
                     mapView.controller.animateTo(initialLocation)
                     mapView.controller.setZoom(18.0)
                     return@OnTouchListener true
