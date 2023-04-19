@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.views.overlay.Marker
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
@@ -70,12 +71,13 @@ class MapFragment : Fragment() {
         val jsonParse = JsonParse(requireContext());
         val num=jsonParse.get_number();
 
-        for (i in 0..num){
+        for (i in 0..num-1){
             var coords=jsonParse.get_coordinates(i);
             val coords_array = coords.split(",").toTypedArray();
             val lat=coords_array[0].toDouble();
             val long=coords_array[1].toDouble();
-            val ponto=GeoPoint(lat,long);
+            val point=GeoPoint(lat,long);
+           
 
         }
 
@@ -106,6 +108,7 @@ class MapFragment : Fragment() {
         }
     }
 
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -125,7 +128,9 @@ class MapFragment : Fragment() {
                 }
             }
         }
+
     }
+
 
 
 }
