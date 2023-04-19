@@ -77,7 +77,7 @@ class MapFragment : Fragment() {
             val lat=coords_array[0].toDouble();
             val long=coords_array[1].toDouble();
             val point=GeoPoint(lat,long);
-           
+            addMarker(point)
 
         }
 
@@ -130,7 +130,14 @@ class MapFragment : Fragment() {
         }
 
     }
-
+    private fun addMarker(p1: GeoPoint){
+        var point = p1
+        var marker = Marker(mapView)
+        marker.position = point
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
+        marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
+        mapView.overlays.add(marker)
+    }
 
 
 }
