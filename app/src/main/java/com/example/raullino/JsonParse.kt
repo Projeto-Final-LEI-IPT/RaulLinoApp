@@ -25,6 +25,14 @@ class JsonParse(val context: Context) {
         return number
     }
 
+    //Função que dado o id do objeto procura o id do edifício
+    //Retorna String
+    fun get_id(id: Int): String {
+        val json_object = JSONObject(json)
+        val json_array = json_object.getJSONArray("dados")
+        return json_array.getJSONObject(id).getString("id")
+    }
+
     //Função que dado o id do edifício procura o título
     //Retorna String
     fun get_title(id: String): String {
