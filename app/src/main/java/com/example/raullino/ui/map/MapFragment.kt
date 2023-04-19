@@ -34,8 +34,8 @@ class MapFragment : Fragment() {
         mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
         mapView.setBuiltInZoomControls(false)
         mapView.setMultiTouchControls(true)
-        mapView.controller.setZoom(12.0)
-        mapView.controller.setCenter(GeoPoint(39.4666700, -8.2000000))
+        mapView.controller.setZoom(18.0)
+        mapView.controller.setCenter(GeoPoint(39.461563, -8.197074))
         
         val myLocationoverlay = MyLocationNewOverlay(mapView)
         myLocationoverlay.enableMyLocation()
@@ -59,8 +59,13 @@ class MapFragment : Fragment() {
                 val center = mapView.mapCenter
                 val lat = center.latitude
                 val lon = center.longitude
+                if (mapView.zoomLevel<14.0){
+                    mapView.controller.animateTo(initialLocation)
+                    mapView.controller.setZoom(18.0)
+                    return@OnTouchListener true
+                }
                 if (lat > maxLat || lat < minLat || lon > maxLon || lon < minLon) {
-                    mapView.controller.animateTo(GeoPoint(39.4666700, -8.2000000))
+                    mapView.controller.animateTo(GeoPoint(39.461563, -8.197074))
                     return@OnTouchListener true
                 }
             }
