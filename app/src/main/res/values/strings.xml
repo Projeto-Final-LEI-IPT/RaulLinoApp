@@ -3,6 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_map">Mapa</string>
     <string name="title_biography">Nota Biográfica</string>
+
+    <!-- Header -->
+    <string name="itinerary">Itinerario</string>
+    <string name="raul_lino">Raul Lino</string>
+
     <!-- Home -->
     <string name="home_arco">Arco</string>
     <string name="home_vertical">Vertical</string>
