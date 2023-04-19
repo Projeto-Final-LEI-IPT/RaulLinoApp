@@ -72,7 +72,8 @@ class MapFragment : Fragment() {
         val num=jsonParse.get_number();
 
         for (i in 0..num-1){
-            var coords=jsonParse.get_coordinates(i);
+            var id_edificio = jsonParse.get_id(i)
+            var coords=jsonParse.get_coordinates(id_edificio);
             val coords_array = coords.split(",").toTypedArray();
             val lat=coords_array[0].toDouble();
             val long=coords_array[1].toDouble();
