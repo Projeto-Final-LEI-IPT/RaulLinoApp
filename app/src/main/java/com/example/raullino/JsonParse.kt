@@ -7,7 +7,7 @@ import java.io.InputStream
 
 /* Classe para aceder ao repositório de informação sobre os edifícios
 Instruções para usar:
-    val jsonParser = jsonParse(context) //context é o contexto da atividade onde estão a chamar a classe
+    val jsonParser = JsonParse(context) //context é o contexto da atividade onde estão a chamar a classe
     jsonParser será o vosso objeto que possui diversos métodos para aceder aos dados
 Lista de métodos:
     jsonParser.get_number()             - Número de edificio

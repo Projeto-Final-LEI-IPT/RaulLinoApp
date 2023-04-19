@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.raullino.JsonParse
 import com.example.raullino.R
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
@@ -65,6 +66,18 @@ class MapFragment : Fragment() {
             false
         }
         mapView.setOnTouchListener(mapTouchListener)
+
+        val jsonParse = JsonParse(requireContext());
+        val num=jsonParse.get_number();
+
+        for (i in 0..num){
+            var coords=jsonParse.get_coordinates(i);
+            val coords_array = coords.split(",").toTypedArray();
+            val lat=coords_array[0].toDouble();
+            val long=coords_array[1].toDouble();
+            val ponto=GeoPoint(lat,long);
+
+        }
 
 
 
