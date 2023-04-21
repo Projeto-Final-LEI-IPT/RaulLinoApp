@@ -21,6 +21,7 @@
     <style name="TitleLine">
         <item name="android:layout_height">3dp</item>
         <item name="android:backgroundTint">@color/yellow</item>
+        <item name="android:fontFamily">@font/raul_lino_fonte</item>
     </style>
 
     <!-- Define o estilo da barra de ativos na navbar -->
@@ -32,7 +33,7 @@
     <!-- Define o estilo do texto -->
     <style name="BodyText">
         <item name="android:textColor">@color/black</item>
-        <!-- <item name="android:typeface">@font/</item> -->
+        <item name="android:fontFamily">@font/fira_sans</item>
     </style>
 
 </resources>

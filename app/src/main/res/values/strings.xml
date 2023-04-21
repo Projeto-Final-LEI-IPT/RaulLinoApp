@@ -18,10 +18,10 @@
     <!-- Nota Biográfica -->
     <string name="nb_titulo">Nota Biográfica</string>
     <string name="nb_dados">
-        Nome completo:
+        <b>Nome completo:</b>
         Raul Lino da Silva
-        Nascimento: 21 de novembro de 1879, Lisboa
-        Morte: 13 de julho de 1974 (94 anos), Lisboa
+        <b>Nascimento:</b> 21 de novembro de 1879, Lisboa
+        <b>Morte:</b> 13 de julho de 1974 (94 anos), Lisboa
     </string>
     <string name="nb_biografia">
         Foi uma personalidade única no que se refere ao panorama das artes em Portugal,
