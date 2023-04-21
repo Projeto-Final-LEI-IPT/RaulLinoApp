@@ -7,72 +7,78 @@
     android:layout_height="match_parent"
     tools:context=".ui.biography.BiographyFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <include
+        android:id="@+id/include"
+        layout="@layout/header_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/titulo"
-            style="@style/TitleLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/nb_titulo"
-            android:textAlignment="textStart"
-            android:textFontWeight="500"
-            android:textSize="25sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        tools:layout_editor_absoluteX="20dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/fotoRetrato"
-                android:layout_width="230dp"
-                android:layout_height="196dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/raullino_retrato"
-                android:contentDescription="@string/nb_descFoto" />
-
-            <TextView
-                android:id="@+id/dados"
-                style="@style/BodyText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/nb_dados"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-        </LinearLayout>
-
-        <ScrollView
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="8dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulo"
+                style="@style/TitleLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/nb_titulo"
+                android:textAlignment="textStart"
+                android:textFontWeight="500"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/fotoRetrato"
+                    android:layout_width="230dp"
+                    android:layout_height="196dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/nb_descFoto"
+                    android:src="@drawable/raullino_retrato" />
+
+                <TextView
+                    android:id="@+id/dados"
+                    style="@style/BodyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/nb_dados"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/biografia"
                 style="@style/BodyText"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nb_biografia"
                 android:textAlignment="textStart"
-                android:textSize="18sp" />
-        </ScrollView>
+                android:textSize="16sp" />
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
