@@ -49,6 +49,7 @@ class MapFragment : Fragment() {
         requestPermissionsIfNecessary(permissions)
 
         // Add touch listener to limit map view area
+        /*
         val initialLocation = GeoPoint(39.461563, -8.197074)
         val maxLat = initialLocation.latitude + 0.08
         val minLat = initialLocation.latitude - 0.08
@@ -72,6 +73,8 @@ class MapFragment : Fragment() {
             false
         }
         mapView.setOnTouchListener(mapTouchListener)
+        */
+
 
         val jsonParse = JsonParse(requireContext());
         val num=jsonParse.get_number();
@@ -142,6 +145,8 @@ class MapFragment : Fragment() {
         marker.position = point
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
         marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
+        marker.setImage(getResources().getDrawable(R.drawable.add_button));
+        marker.setSnippet("teste")
         mapView.overlays.add(marker)
     }
 
