@@ -2,11 +2,13 @@ package com.example.raullino.ui.map
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -21,6 +23,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 class MapFragment : Fragment() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     private lateinit var mapView: MapView
+    //private lateinit var img : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +44,8 @@ class MapFragment : Fragment() {
         myLocationoverlay.enableMyLocation()
         mapView.overlays.add(myLocationoverlay)
 
+
+
         // Check for location permission
         val permissions = arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -49,7 +54,7 @@ class MapFragment : Fragment() {
         requestPermissionsIfNecessary(permissions)
 
         // Add touch listener to limit map view area
-        /*
+
         val initialLocation = GeoPoint(39.461563, -8.197074)
         val maxLat = initialLocation.latitude + 0.08
         val minLat = initialLocation.latitude - 0.08
@@ -73,7 +78,12 @@ class MapFragment : Fragment() {
             false
         }
         mapView.setOnTouchListener(mapTouchListener)
-        */
+
+
+
+
+
+
 
 
         val jsonParse = JsonParse(requireContext());
@@ -82,11 +92,12 @@ class MapFragment : Fragment() {
         for (i in 0..num-1){
             var id_edificio = jsonParse.get_id(i)
             var coords=jsonParse.get_coordinates(id_edificio);
+            var title=jsonParse.get_title(id_edificio);
             val coords_array = coords.split(",").toTypedArray();
             val lat=coords_array[0].toDouble();
             val long=coords_array[1].toDouble();
             val point=GeoPoint(lat,long);
-            addMarker(point)
+            addMarker(point,title);
 
         }
 
@@ -139,16 +150,18 @@ class MapFragment : Fragment() {
         }
 
     }
-    private fun addMarker(p1: GeoPoint){
+    private fun addMarker(p1: GeoPoint, title: String){
         var point = p1
         var marker = Marker(mapView)
         marker.position = point
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
         marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
         marker.setImage(getResources().getDrawable(R.drawable.add_button));
-        marker.setSnippet("teste")
+        marker.setTitle(title)
         mapView.overlays.add(marker)
     }
+
+
 
 
 }
