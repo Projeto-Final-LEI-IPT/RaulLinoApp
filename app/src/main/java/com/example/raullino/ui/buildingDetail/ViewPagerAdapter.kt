@@ -21,7 +21,6 @@ class ImageViewPagerAdapter(private val drawableList: List<Int>) :
         }
     }
 
-
     override fun getItemCount(): Int = drawableList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
@@ -36,6 +35,4 @@ class ImageViewPagerAdapter(private val drawableList: List<Int>) :
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         holder.setData(drawableList[position])
     }
-
-
 }

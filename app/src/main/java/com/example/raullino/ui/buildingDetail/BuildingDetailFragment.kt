@@ -28,6 +28,9 @@ class BuildingDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        // Id do Edificio
+        var buildingId  = "4"
+
         _binding = FragmentBuildingDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -35,23 +38,26 @@ class BuildingDetailFragment : Fragment() {
 
         textTitle = binding.textTitle
         textInfo = binding.textInfo
-        textTitle.text = jsonParse.get_title("3")
-        textInfo.text = jsonParse.get_info("3")
-        imageDrawableList.add( R.drawable.sam_7423)
-        imageDrawableList.add(R.drawable.sam_7439)
-        imageDrawableList.add( R.drawable.sam_7450)
-        imageDrawableList.add(R.drawable.sam_7432)
+        textTitle.text = jsonParse.get_title(buildingId)
+        textInfo.text = jsonParse.get_info(buildingId)
 
-        var imagePath=jsonParse.get_image("3").get(1).split("/").toTypedArray()  //array do path da imagem
-        var Arraynum=imagePath.size                                                           //tamanho do array
-        var image=imagePath[Arraynum-1].split(".").toTypedArray()                   //dividir o nome da imagem em 2 (Ex:['sam_7432','jpg'])
-        var imageName=image[0].toLowerCase().replace("-","_")                //tratamento do nome da imagem
-        val drawableName = imageName
-        val packageName = requireContext().packageName
-        val resourceId = requireContext().resources.getIdentifier(drawableName, "drawable", packageName)
+        var imagesArray = jsonParse.get_image(buildingId)
 
-        imageDrawableList.add(resourceId)
-        //initializing the adapter
+        for(image in imagesArray){
+            var imagePath = image.split("/").toTypedArray()  //array do path da imagem
+            // tamanho do array
+            var Arraynum = imagePath.size
+            // dividir o nome da imagem em 2 (Ex:['sam_7432','jpg'])
+            var image = imagePath[Arraynum-1].split(".").toTypedArray()
+            // tratamento do nome da imagem
+            var imageName = image[0].toLowerCase().replace("-","_").replace(" ","_").replace("(","_").replace(")","_")
+            val drawableName = imageName
+            val packageName = requireContext().packageName
+            val resourceId = requireContext().resources.getIdentifier(drawableName, "drawable", packageName)
+            imageDrawableList.add(resourceId)
+        }
+
+        // initializing the adapter
         imageViewPagerAdapter = ImageViewPagerAdapter(imageDrawableList)
 
         setUpViewPager()
@@ -60,26 +66,20 @@ class BuildingDetailFragment : Fragment() {
     }
 
     private fun setUpViewPager() {
-
         binding.viewPager.adapter = imageViewPagerAdapter
-
-        //set the orientation of the viewpager using ViewPager2.orientation
+        // set the orientation of the viewpager using ViewPager2.orientation
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
-
-        //select any page you want as your starting page
+        // select any page you want as your starting page
         val currentPageIndex = 0
         binding.viewPager.currentItem = currentPageIndex
 
         // registering for page change callback
         binding.viewPager.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
-
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-
                     //update the image number textview
-                    binding.imageNumberTV.text = "${position + 1} / ${imageDrawableList.size}"
+                    binding.buildingImage.text = "${position + 1} / ${imageDrawableList.size}"
                 }
             }
         )
@@ -87,11 +87,9 @@ class BuildingDetailFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-
         // unregistering the onPageChangedCallback
         binding.viewPager.unregisterOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {}
         )
     }
-
 }
