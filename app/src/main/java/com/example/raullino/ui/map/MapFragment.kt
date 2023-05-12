@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -84,7 +85,11 @@ class MapFragment : Fragment() {
 
 
 
-
+        val fabContainer: RelativeLayout = view.findViewById(R.id.fab_container)
+        fabContainer.setOnClickListener {
+            // Lógica a ser executada quando o botão for clicado
+            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
+        }
 
         val jsonParse = JsonParse(requireContext());
         val num=jsonParse.get_number();
