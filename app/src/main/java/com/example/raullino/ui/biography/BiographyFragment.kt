@@ -18,20 +18,12 @@ class BiographyFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-                ViewModelProvider(this).get(BiographyViewModel::class.java)
 
         _binding = FragmentBiographyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textBiography
-        //dashboardViewModel.text.observe(viewLifecycleOwner) {
-        //    textView.text = it
-        //}
         return root
     }
 
