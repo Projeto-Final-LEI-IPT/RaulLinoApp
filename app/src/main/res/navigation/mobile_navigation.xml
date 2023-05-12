@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.raullino.ui.buildingDetail.BuildingDetailFragment"
+        android:name="com.example.raullino.ui.biography.BiographyFragment"
         android:label="@string/title_biography"
-        tools:layout="@layout/fragment_building_detail" />
+        tools:layout="@layout/fragment_biography" /> />
 
     <fragment
         android:id="@+id/navigation_notifications"
