@@ -29,7 +29,7 @@ class BuildingDetailFragment : Fragment() {
     ): View {
 
         // Id do Edificio
-        var buildingId  = "4"
+        var buildingId = "4"
 
         _binding = FragmentBuildingDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -43,17 +43,20 @@ class BuildingDetailFragment : Fragment() {
 
         var imagesArray = jsonParse.get_image(buildingId)
 
-        for(image in imagesArray){
+        for (image in imagesArray) {
             var imagePath = image.split("/").toTypedArray()  //array do path da imagem
             // tamanho do array
             var Arraynum = imagePath.size
             // dividir o nome da imagem em 2 (Ex:['sam_7432','jpg'])
-            var image = imagePath[Arraynum-1].split(".").toTypedArray()
+            var image = imagePath[Arraynum - 1].split(".").toTypedArray()
             // tratamento do nome da imagem
-            var imageName = image[0].toLowerCase().replace("-","_").replace(" ","_").replace("(","_").replace(")","_")
+            var imageName =
+                image[0].toLowerCase().replace("-", "_").replace(" ", "_").replace("(", "_")
+                    .replace(")", "_")
             val drawableName = imageName
             val packageName = requireContext().packageName
-            val resourceId = requireContext().resources.getIdentifier(drawableName, "drawable", packageName)
+            val resourceId =
+                requireContext().resources.getIdentifier(drawableName, "drawable", packageName)
             imageDrawableList.add(resourceId)
         }
 

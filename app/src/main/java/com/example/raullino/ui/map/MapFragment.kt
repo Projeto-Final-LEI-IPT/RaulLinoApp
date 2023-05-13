@@ -1,6 +1,7 @@
 package com.example.raullino.ui.map
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.media.Image
 import android.os.Bundle
@@ -24,12 +25,10 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 class MapFragment : Fragment() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     private lateinit var mapView: MapView
-    //private lateinit var img : ImageView
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
@@ -40,33 +39,30 @@ class MapFragment : Fragment() {
         mapView.setMultiTouchControls(true)
         mapView.controller.setZoom(18.0)
         mapView.controller.setCenter(GeoPoint(39.461563, -8.197074))
-        
+
         val myLocationoverlay = MyLocationNewOverlay(mapView)
         myLocationoverlay.enableMyLocation()
         mapView.overlays.add(myLocationoverlay)
 
-
-
         // Check for location permission
         val permissions = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
         )
+
         requestPermissionsIfNecessary(permissions)
 
         // Add touch listener to limit map view area
-
         val initialLocation = GeoPoint(39.461563, -8.197074)
         val maxLat = initialLocation.latitude + 0.08
         val minLat = initialLocation.latitude - 0.08
         val maxLon = initialLocation.longitude + 0.08
         val minLon = initialLocation.longitude - 0.08
-        val mapTouchListener = View.OnTouchListener {_, event ->
+        val mapTouchListener = View.OnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 val center = mapView.mapCenter
                 val lat = center.latitude
                 val lon = center.longitude
-                if (mapView.zoomLevel<13.0){
+                if (mapView.zoomLevel < 13.0) {
                     mapView.controller.animateTo(initialLocation)
                     mapView.controller.setZoom(18.0)
                     return@OnTouchListener true
@@ -78,12 +74,8 @@ class MapFragment : Fragment() {
             }
             false
         }
+
         mapView.setOnTouchListener(mapTouchListener)
-
-
-
-
-
 
         val fabContainer: RelativeLayout = view.findViewById(R.id.fab_container)
         fabContainer.setOnClickListener {
@@ -92,32 +84,28 @@ class MapFragment : Fragment() {
         }
 
         val jsonParse = JsonParse(requireContext());
-        val num=jsonParse.get_number();
+        val num = jsonParse.get_number();
 
-        for (i in 0..num-1){
+        for (i in 0..num - 1) {
             var id_edificio = jsonParse.get_id(i)
-            var coords=jsonParse.get_coordinates(id_edificio);
-            var title=jsonParse.get_title(id_edificio);
+            var coords = jsonParse.get_coordinates(id_edificio);
+            var title = jsonParse.get_title(id_edificio);
             val coords_array = coords.split(",").toTypedArray();
-            val lat=coords_array[0].toDouble();
-            val long=coords_array[1].toDouble();
-            val point=GeoPoint(lat,long);
-            addMarker(point,title);
-
+            val lat = coords_array[0].toDouble();
+            val long = coords_array[1].toDouble();
+            val point = GeoPoint(lat, long);
+            addMarker(point, title);
         }
-
-
-
 
         return view
     }
+
     private fun requestPermissionsIfNecessary(permissions: Array<out String>) {
         val permissionsToRequest = ArrayList<String>()
 
         permissions.forEach { permission ->
             if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    permission
+                    requireContext(), permission
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 // Permission is not granted
@@ -127,35 +115,32 @@ class MapFragment : Fragment() {
 
         if (permissionsToRequest.isNotEmpty()) {
             requestPermissions(
-                permissionsToRequest.toTypedArray(),
-                REQUEST_PERMISSIONS_REQUEST_CODE
+                permissionsToRequest.toTypedArray(), REQUEST_PERMISSIONS_REQUEST_CODE
             )
         }
     }
 
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         when (requestCode) {
             REQUEST_PERMISSIONS_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED
-                ) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission granted, do nothing
                 } else {
                     // Permission denied, show a message or dialog
-                    Toast.makeText(context, "É necessário conceder a permissão para usar esta funcionalidade.", Toast.LENGTH_SHORT).show()
-
-
+                    Toast.makeText(
+                        context,
+                        "É necessário conceder a permissão para usar esta funcionalidade.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
-
     }
-    private fun addMarker(p1: GeoPoint, title: String){
+
+    private fun addMarker(p1: GeoPoint, title: String) {
         var point = p1
         var marker = Marker(mapView)
         marker.position = point
@@ -165,8 +150,4 @@ class MapFragment : Fragment() {
         marker.setTitle(title)
         mapView.overlays.add(marker)
     }
-
-
-
-
 }
