@@ -3,23 +3,24 @@ package com.example.raullino.ui.map
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.raullino.JsonParse
 import com.example.raullino.R
+import com.example.raullino.ui.home.HomeFragment
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.infowindow.InfoWindow
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
 class MapFragment : Fragment() {
@@ -140,14 +141,60 @@ class MapFragment : Fragment() {
         }
     }
 
+    private var currentInfoWindow: InfoWindow? = null
     private fun addMarker(p1: GeoPoint, title: String) {
         var point = p1
         var marker = Marker(mapView)
+
+        // Cria e coloca a custom InfoWindow para os markers
+        val customInfoWindow = CustomInfoWindow(R.layout.info_window, mapView, title) { marker ->
+            // Click event na InfoWindow
+
+        }
+        marker.setOnMarkerClickListener { _, _ ->
+            // Fecha a InfoWindow atualmente aberta
+            currentInfoWindow?.close()
+
+            // Abre a nova InfoWindow
+            currentInfoWindow = customInfoWindow
+            customInfoWindow.open(marker, point, 0, 0)
+
+            // Indica que o clique foi tratado e não executa o comportamento padrão do marker
+            true
+        }
+
+        mapView.setOnTouchListener { _, _ ->
+            // Fecha a InfoWindow atualmente aberta quando houver um clique no mapa
+            currentInfoWindow?.close()
+            false
+        }
+
         marker.position = point
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
         marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
         marker.setImage(getResources().getDrawable(R.drawable.add_button));
-        marker.setTitle(title)
+        //marker.setTitle(title)
+        marker?.infoWindow = customInfoWindow
         mapView.overlays.add(marker)
+
     }
+
+    inner class CustomInfoWindow(layoutResId: Int, mapView: MapView, private val title: String, param: (Any) -> Unit) : InfoWindow(layoutResId, mapView) {
+
+        override fun onClose() {
+            // This method is called when the InfoWindow is closed
+        }
+
+        private lateinit var textInfoWindow: TextView
+        override fun onOpen(item: Any?) {
+            // Obter uma referência ao textInfoWindow no layout da InfoWindow
+            textInfoWindow = mView.findViewById(R.id.textInfoWindow)
+
+            // Definir o texto para o textInfoWindow através do ID do Json
+            textInfoWindow.text = title
+        }
+
+    }
+
+
 }
