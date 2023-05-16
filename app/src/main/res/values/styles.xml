@@ -36,4 +36,8 @@
         <item name="android:fontFamily">@font/fira_sans</item>
     </style>
 
+    <style name="TemaButton" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="backgroundTint">@color/black</item>
+    </style>
+
 </resources>

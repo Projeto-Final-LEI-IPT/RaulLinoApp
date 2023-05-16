@@ -4,10 +4,13 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -172,14 +175,20 @@ class MapFragment : Fragment() {
         marker.position = point
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
         marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
-        marker.setImage(getResources().getDrawable(R.drawable.add_button));
+        //marker.setImage(getResources().getDrawable(R.drawable.add_button));
         //marker.setTitle(title)
         marker?.infoWindow = customInfoWindow
         mapView.overlays.add(marker)
 
     }
 
-    inner class CustomInfoWindow(layoutResId: Int, mapView: MapView, private val title: String, param: (Any) -> Unit) : InfoWindow(layoutResId, mapView) {
+    inner class CustomInfoWindow(
+        layoutResId: Int,
+        mapView: MapView,
+        private val title: String,
+        param: (Any) -> Unit) : InfoWindow(layoutResId, mapView) {
+
+        private lateinit var plusButton: Button
 
         override fun onClose() {
             // This method is called when the InfoWindow is closed
@@ -192,6 +201,11 @@ class MapFragment : Fragment() {
 
             // Definir o texto para o textInfoWindow através do ID do Json
             textInfoWindow.text = title
+
+            val PlusButton: Button = mView.findViewById(R.id.plusButton)
+            PlusButton.setOnClickListener {
+                Log.d("MapFragment", "Clicado na InfoWindow!")
+            }
         }
 
     }
