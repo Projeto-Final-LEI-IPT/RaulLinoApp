@@ -19,6 +19,16 @@ class BuildingDetailFragment : Fragment() {
     private lateinit var imageViewPagerAdapter: ImageViewPagerAdapter
     val imageDrawableList = ArrayList<Int>()
 
+    companion object {
+        fun newInstance(id_edificio: String): BuildingDetailFragment {
+            val fragment = BuildingDetailFragment()
+            val args = Bundle()
+            args.putString("id_edificio", id_edificio)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
@@ -29,7 +39,7 @@ class BuildingDetailFragment : Fragment() {
     ): View {
 
         // Id do Edificio
-        var buildingId = "4"
+        var buildingId = arguments?.getString("id_edificio") as String
 
         _binding = FragmentBuildingDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
