@@ -4,8 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.buildingDetail.BuildingDetailFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.buildingDetail.BuildingDetailFragment"
+    android:id="@+id/fragment_building_detail"
+    android:background="@color/white">
 
     <include
         android:id="@+id/include"

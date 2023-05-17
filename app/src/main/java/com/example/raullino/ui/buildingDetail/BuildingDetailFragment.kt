@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.raullino.JsonParse
 import com.example.raullino.R
@@ -19,6 +21,16 @@ class BuildingDetailFragment : Fragment() {
     private lateinit var imageViewPagerAdapter: ImageViewPagerAdapter
     val imageDrawableList = ArrayList<Int>()
 
+    companion object {
+        fun newInstance(id_edificio: String): BuildingDetailFragment {
+            val fragment = BuildingDetailFragment()
+            val args = Bundle()
+            args.putString("id_edificio", id_edificio)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
@@ -28,8 +40,17 @@ class BuildingDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Volta diretamente ao fragmento do mapa
+                parentFragmentManager.popBackStack("mapFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+
         // Id do Edificio
-        var buildingId = "4"
+        var buildingId = arguments?.getString("id_edificio") as String
 
         _binding = FragmentBuildingDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root

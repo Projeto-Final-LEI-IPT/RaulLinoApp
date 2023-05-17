@@ -25,4 +25,7 @@
 
     <string name="raul_Lino">Raul Lino</string>
 
+    <!-- Map -->
+    <string name="plusButton">Botão detalhes</string>
+
 </resources>
