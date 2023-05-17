@@ -67,19 +67,16 @@ class MapFragment : Fragment() {
                 val lat = center.latitude
                 val lon = center.longitude
                 if (mapView.zoomLevel < 13.0) {
-                    mapView.controller.animateTo(initialLocation)
-                    mapView.controller.setZoom(18.0)
+                    mapView.controller.animateTo(GeoPoint(initialLocation), 13.0, 500L)
                     return@OnTouchListener true
                 }
                 if (lat > maxLat || lat < minLat || lon > maxLon || lon < minLon) {
-                    mapView.controller.animateTo(GeoPoint(39.461563, -8.197074))
+                    mapView.controller.animateTo(GeoPoint(initialLocation))
                     return@OnTouchListener true
                 }
             }
             false
         }
-
-        mapView.setOnTouchListener(mapTouchListener)
 
         val fabContainer: RelativeLayout = view.findViewById(R.id.fab_container)
         fabContainer.setOnClickListener {
@@ -100,6 +97,8 @@ class MapFragment : Fragment() {
             val point = GeoPoint(lat, long);
             addMarker(point, title, id_edificio);
         }
+
+        mapView.setOnTouchListener(mapTouchListener)
 
         return view
     }
