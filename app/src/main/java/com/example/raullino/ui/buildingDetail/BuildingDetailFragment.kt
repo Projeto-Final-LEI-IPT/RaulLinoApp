@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.raullino.JsonParse
 import com.example.raullino.R
@@ -37,6 +39,15 @@ class BuildingDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Volta diretamente ao fragmento do mapa
+                parentFragmentManager.popBackStack("mapFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
 
         // Id do Edificio
         var buildingId = arguments?.getString("id_edificio") as String

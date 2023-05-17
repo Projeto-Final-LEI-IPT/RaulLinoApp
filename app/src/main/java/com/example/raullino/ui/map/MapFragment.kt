@@ -16,7 +16,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import com.example.raullino.ui.buildingDetail.BuildingDetailFragment
@@ -176,13 +175,11 @@ class MapFragment : Fragment() {
         marker.position = point
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
         marker.setIcon(getResources().getDrawable(R.drawable.pontointeresse));
-        //marker.setImage(getResources().getDrawable(R.drawable.add_button));
-        //marker.setTitle(title)
         marker?.infoWindow = customInfoWindow
         mapView.overlays.add(marker)
-
     }
 
+    //Personalização da InfoWindow
     inner class CustomInfoWindow(
         layoutResId: Int,
         mapView: MapView,
@@ -198,33 +195,32 @@ class MapFragment : Fragment() {
 
         private lateinit var textInfoWindow: TextView
         override fun onOpen(item: Any?) {
-
-
             // Obter uma referência ao textInfoWindow no layout da InfoWindow
             textInfoWindow = mView.findViewById(R.id.textInfoWindow)
 
             // Definir o texto para o textInfoWindow através do ID do Json
             textInfoWindow.text = title
 
+            // Botão + na infoWindow
             val PlusButton: Button = mView.findViewById(R.id.plusButton)
             PlusButton.setOnClickListener {
-                Log.d("MapFragment", "Clicado na InfoWindow!")
-            }
-
-            val linearLayout: LinearLayout = mView.findViewById(R.id.infowindow)
-
-            linearLayout.setOnClickListener {
-
                 openBuildingDetailFragment(id_edificio)
             }
+
+            // Clique do LinearLayout (InfoWindow)
+            /*val linearLayout: LinearLayout = mView.findViewById(R.id.infowindow)
+            linearLayout.setOnClickListener {
+                openBuildingDetailFragment(id_edificio)
+            }*/
         }
 
+        //Abre e trasmite o ID do edificio (id_edificio) para o fragment BuildingDetailFragment
         private fun openBuildingDetailFragment(id_edificio: String) {
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             val buildingDetailFragment = BuildingDetailFragment.newInstance(id_edificio)
             fragmentTransaction.add(R.id.map, buildingDetailFragment)
-            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.addToBackStack("mapFragment")
             fragmentTransaction.commit()
         }
     }
