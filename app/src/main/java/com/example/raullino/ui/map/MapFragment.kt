@@ -16,9 +16,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import com.example.raullino.ui.buildingDetail.BuildingDetailFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.osmdroid.bonuspack.routing.OSRMRoadManager
+import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -80,8 +86,18 @@ class MapFragment : Fragment() {
 
         val fabContainer: RelativeLayout = view.findViewById(R.id.fab_container)
         fabContainer.setOnClickListener {
-            // Lógica a ser executada quando o botão for clicado
-            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
+            val roadManager = OSRMRoadManager(this.requireContext())
+            val waypoints = ArrayList<GeoPoint>()
+            waypoints.add(GeoPoint(39.463567,-8.201586))
+            waypoints.add(GeoPoint(39.461147, -8.199511))
+            lifecycleScope.launch {
+                val road = withContext(Dispatchers.IO) {
+                    roadManager.getRoad(waypoints)
+                }
+                val roadOverlay = RoadManager.buildRoadOverlay(road)
+                mapView.overlays.add(roadOverlay)
+                mapView.invalidate()
+            }
         }
 
         val jsonParse = JsonParse(requireContext());
