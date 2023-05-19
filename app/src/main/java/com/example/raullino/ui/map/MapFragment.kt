@@ -42,6 +42,8 @@ class MapFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
+        val jsonParse = JsonParse(requireContext());
+
         // Inicialize the map
         mapView = view.findViewById(R.id.map_view)
         mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
@@ -88,8 +90,20 @@ class MapFragment : Fragment() {
         fabContainer.setOnClickListener {
             val roadManager = OSRMRoadManager(this.requireContext())
             val waypoints = ArrayList<GeoPoint>()
-            waypoints.add(GeoPoint(39.463567,-8.201586))
-            waypoints.add(GeoPoint(39.461147, -8.199511))
+
+            // Todos os pontos 15, 6, 16, 14, 10, 11, 14, 7
+            val itinerary1 = arrayListOf("15", "6", "16", "14", "11", "7")
+
+            // Todos os pontos 8, 12, 5, 9, 17
+            val itinerary2 = arrayListOf("8", "12", "5", "9", "17")
+
+            for (itinerary in itinerary1) {
+                var coords = jsonParse.get_coordinates(itinerary);
+                val coords_array = coords.split(",").toTypedArray();
+                val lat = coords_array[0].toDouble();
+                val long = coords_array[1].toDouble();
+                waypoints.add(GeoPoint(lat, long))
+            }
             lifecycleScope.launch {
                 val road = withContext(Dispatchers.IO) {
                     roadManager.getRoad(waypoints)
@@ -100,7 +114,6 @@ class MapFragment : Fragment() {
             }
         }
 
-        val jsonParse = JsonParse(requireContext());
         val num = jsonParse.get_number();
 
         for (i in 0..num - 1) {
