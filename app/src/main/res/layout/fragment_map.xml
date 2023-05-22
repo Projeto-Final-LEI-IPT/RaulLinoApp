@@ -37,17 +37,35 @@
         app:layout_constraintEnd_toEndOf="@+id/map_view"
         app:layout_constraintTop_toTopOf="@+id/map_view">
 
-        <ImageView
-            android:layout_width="55dp"
-            android:layout_height="53dp"
-            android:layout_margin="1.25dp"
-            android:layout_centerVertical="false"
-            android:layout_marginEnd="2dp"
-            android:scaleX="1.25"
-            android:scaleY="1.25"
-            android:src="@drawable/mapa_itiner_rio_clic" />
-    </RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <ToggleButton
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textOn=""
+                android:textOff=""/>
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="53dp"
+                android:layout_gravity="center"
+                android:layout_margin="1.25dp"
+                android:scaleX="1.25"
+                android:scaleY="1.25"
+                android:src="@drawable/mapa_itiner_rio_clic"
+                android:translationZ="6dp"
+                app:layout_constraintBottom_toTopOf="@+id/toggleButton" />
+        </FrameLayout>
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

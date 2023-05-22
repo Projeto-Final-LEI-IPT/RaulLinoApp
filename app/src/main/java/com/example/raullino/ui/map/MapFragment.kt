@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.raullino.JsonParse
@@ -78,10 +79,11 @@ class MapFragment : Fragment() {
             false
         }
 
-        val fabContainer: RelativeLayout = view.findViewById(R.id.fab_container)
-        fabContainer.setOnClickListener {
-            // Lógica a ser executada quando o botão for clicado
-            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
+
+
+        val toggle: ToggleButton = view.findViewById(R.id.toggleButton)
+        toggle.setOnCheckedChangeListener { _, isChecked ->
+            Toast.makeText(context, if(isChecked) "ON" else "OFF", Toast.LENGTH_SHORT).show()
         }
 
         val jsonParse = JsonParse(requireContext());
