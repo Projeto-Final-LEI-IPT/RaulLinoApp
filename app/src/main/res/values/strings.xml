@@ -27,5 +27,6 @@
 
     <!-- Map -->
     <string name="plusButton">Botão detalhes</string>
+    <string name="o_inicio">O Inicio</string>
 
 </resources>
