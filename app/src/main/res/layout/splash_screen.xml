@@ -7,7 +7,9 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
         android:src="@drawable/raulino_logo" />
 
     <TextView
@@ -15,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView3"
-        android:layout_marginBottom="89dp"
         android:fontFamily="@font/raul_lino_fonte"
         android:gravity="center"
         android:text="@string/raul_Lino"
