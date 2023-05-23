@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
-    android:id="@+id/map">
+    tools:context=".ui.home.HomeFragment">
 
     <include
         android:id="@+id/include"
@@ -25,47 +24,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
-    <RelativeLayout
-        android:id="@+id/fab_container"
-        android:layout_width="60dp"
-        android:layout_height="70dp"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleButtonGroup"
+        android:layout_width="65dp"
+        android:layout_height="127dp"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_corner"
         android:clickable="true"
         android:focusable="true"
+        android:orientation="vertical"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="@+id/map_view"
         app:layout_constraintTop_toTopOf="@+id/map_view">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/togglebutton1"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="49dp"
+            android:layout_height="55dp"
+            android:text="button_label_private"
+            app:icon="@drawable/pontointeresse"
 
-            <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textOn=""
-                android:textOff=""/>
+            app:iconTint="#4F4FB6" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="53dp"
-                android:layout_gravity="center"
-                android:layout_margin="1.25dp"
-                android:scaleX="1.25"
-                android:scaleY="1.25"
-                android:src="@drawable/mapa_itiner_rio_clic"
-                android:translationZ="6dp"
-                app:layout_constraintBottom_toTopOf="@+id/toggleButton" />
-        </FrameLayout>
+        <Button
+            android:id="@+id/togglebutton2"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="49dp"
+            android:layout_height="55dp"
+            app:icon="@drawable/pontointeresse"
+            app:iconTint="@color/ligh_green" />
 
-    </RelativeLayout>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

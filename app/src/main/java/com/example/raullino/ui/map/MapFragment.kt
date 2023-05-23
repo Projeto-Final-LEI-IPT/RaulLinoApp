@@ -3,6 +3,7 @@ package com.example.raullino.ui.map
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import com.example.raullino.ui.buildingDetail.BuildingDetailFragment
+import com.google.android.material.button.MaterialButtonToggleGroup
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -30,7 +32,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 class MapFragment : Fragment() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     private lateinit var mapView: MapView
-
+    private lateinit var Mbtg:MaterialButtonToggleGroup
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -78,13 +80,33 @@ class MapFragment : Fragment() {
             }
             false
         }
-
-
-
-        val toggle: ToggleButton = view.findViewById(R.id.toggleButton)
-        toggle.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(context, if(isChecked) "ON" else "OFF", Toast.LENGTH_SHORT).show()
+        val toggleButton1: Button = view.findViewById(R.id.togglebutton1)
+        toggleButton1.setOnClickListener {
+            // Lógica a ser executada quando o botão for clicado
+            // Por exemplo:
+            toggleButton1.isSelected = !toggleButton1.isSelected
+            if (toggleButton1.isSelected) {
+                Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
+            } else {
+                // Ação quando o botão não estiver selecionado
+                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+            }
         }
+        val toggleButton2: Button = view.findViewById(R.id.togglebutton2)
+        toggleButton2.setOnClickListener {
+            // Lógica a ser executada quando o botão for clicado
+            // Por exemplo:
+            toggleButton2.isSelected = !toggleButton2.isSelected
+            if (toggleButton2.isSelected) {
+                Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
+            } else {
+                // Ação quando o botão não estiver selecionado
+                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+
 
         val jsonParse = JsonParse(requireContext());
         val num = jsonParse.get_number();
