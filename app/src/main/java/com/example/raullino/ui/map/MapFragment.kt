@@ -113,6 +113,16 @@ class MapFragment : Fragment() {
                 val long = coords_array[1].toDouble();
                 waypoints.add(GeoPoint(lat, long))
             }
+
+            for (itinerary in itinerary2) {
+                    var coords = jsonParse.get_coordinates(itinerary);
+                    val coords_array = coords.split(",").toTypedArray();
+                    val lat = coords_array[0].toDouble();
+                    val long = coords_array[1].toDouble();
+                    waypoints.add(GeoPoint(lat, long))
+            }
+
+
             lifecycleScope.launch {
                 val road = withContext(Dispatchers.IO) {
                     roadManager.getRoad(waypoints)
@@ -122,10 +132,11 @@ class MapFragment : Fragment() {
                 mapView.invalidate()
             }
             } else {
-                // Ação quando o botão não estiver selecionado
-                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+                mapView.overlays.removeLast()
+                mapView.invalidate()
             }
         }
+
         val toggleButton2: Button = view.findViewById(R.id.togglebutton2)
         toggleButton2.setOnClickListener {
             // Lógica a ser executada quando o botão for clicado
@@ -134,8 +145,8 @@ class MapFragment : Fragment() {
             if (toggleButton2.isSelected) {
                 Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
             } else {
-                // Ação quando o botão não estiver selecionado
-                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+                mapView.overlays.removeLast()
+                mapView.invalidate()
             }
         }
 
