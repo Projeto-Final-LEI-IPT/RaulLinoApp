@@ -104,7 +104,7 @@ class MapFragment : Fragment() {
             val itinerary1 = arrayListOf("15", "6", "16", "14", "11", "7")
 
             // Todos os pontos 8, 12, 5, 9, 17
-            val itinerary2 = arrayListOf("8", "12", "5", "9", "17")
+            val itinerary2 = arrayListOf("8", "9", "17")
 
             for (itinerary in itinerary1) {
                 var coords = jsonParse.get_coordinates(itinerary);
