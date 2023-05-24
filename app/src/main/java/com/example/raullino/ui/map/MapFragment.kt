@@ -103,9 +103,6 @@ class MapFragment : Fragment() {
             // Todos os pontos 15, 6, 16, 14, 10, 11, 14, 7
             val itinerary1 = arrayListOf("15", "6", "16", "14", "11", "7")
 
-            // Todos os pontos 8, 12, 5, 9, 17
-            val itinerary2 = arrayListOf("8", "9", "17")
-
             for (itinerary in itinerary1) {
                 var coords = jsonParse.get_coordinates(itinerary);
                 val coords_array = coords.split(",").toTypedArray();
@@ -114,20 +111,11 @@ class MapFragment : Fragment() {
                 waypoints.add(GeoPoint(lat, long))
             }
 
-            for (itinerary in itinerary2) {
-                    var coords = jsonParse.get_coordinates(itinerary);
-                    val coords_array = coords.split(",").toTypedArray();
-                    val lat = coords_array[0].toDouble();
-                    val long = coords_array[1].toDouble();
-                    waypoints.add(GeoPoint(lat, long))
-            }
-
-
             lifecycleScope.launch {
                 val road = withContext(Dispatchers.IO) {
                     roadManager.getRoad(waypoints)
                 }
-                val roadOverlay = RoadManager.buildRoadOverlay(road)
+                val roadOverlay = RoadManager.buildRoadOverlay(road,Color.GREEN, 8F)
                 mapView.overlays.add(roadOverlay)
                 mapView.invalidate()
             }
@@ -139,19 +127,38 @@ class MapFragment : Fragment() {
 
         val toggleButton2: Button = view.findViewById(R.id.togglebutton2)
         toggleButton2.setOnClickListener {
+
             // Lógica a ser executada quando o botão for clicado
             // Por exemplo:
             toggleButton2.isSelected = !toggleButton2.isSelected
             if (toggleButton2.isSelected) {
-                Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
+                val roadManager = OSRMRoadManager(this.requireContext())
+                val waypoints = ArrayList<GeoPoint>()
+
+                // Todos os pontos 8, 12, 5, 9, 17
+                val itinerary2 = arrayListOf("8", "9", "17")
+
+                for (itinerary in itinerary2) {
+                    var coords = jsonParse.get_coordinates(itinerary);
+                    val coords_array = coords.split(",").toTypedArray();
+                    val lat = coords_array[0].toDouble();
+                    val long = coords_array[1].toDouble();
+                    waypoints.add(GeoPoint(lat, long))
+                }
+
+                lifecycleScope.launch {
+                    val road = withContext(Dispatchers.IO) {
+                        roadManager.getRoad(waypoints)
+                    }
+                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.RED, 8F)
+                    mapView.overlays.add(roadOverlay)
+                    mapView.invalidate()
+                }
             } else {
                 mapView.overlays.removeLast()
                 mapView.invalidate()
             }
         }
-
-
-
 
         val num = jsonParse.get_number();
 
