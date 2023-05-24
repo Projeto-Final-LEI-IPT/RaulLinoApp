@@ -135,8 +135,7 @@ class MapFragment : Fragment() {
                 val roadManager = OSRMRoadManager(this.requireContext())
                 val waypoints = ArrayList<GeoPoint>()
 
-                // Todos os pontos 8, 12, 5, 9, 17
-                val itinerary2 = arrayListOf("8", "9", "17")
+                val itinerary2 = arrayListOf("7", "17")
 
                 for (itinerary in itinerary2) {
                     var coords = jsonParse.get_coordinates(itinerary);
@@ -150,7 +149,7 @@ class MapFragment : Fragment() {
                     val road = withContext(Dispatchers.IO) {
                         roadManager.getRoad(waypoints)
                     }
-                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.RED, 8F)
+                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.BLUE, 8F)
                     mapView.overlays.add(roadOverlay)
                     mapView.invalidate()
                 }
