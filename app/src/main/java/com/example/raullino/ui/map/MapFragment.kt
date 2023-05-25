@@ -18,9 +18,15 @@ import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import com.example.raullino.ui.buildingDetail.BuildingDetailFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.osmdroid.bonuspack.routing.OSRMRoadManager
+import org.osmdroid.bonuspack.routing.RoadManager
 import com.google.android.material.button.MaterialButtonToggleGroup
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
@@ -38,6 +44,8 @@ class MapFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_map, container, false)
+
+        val jsonParse = JsonParse(requireContext());
 
         // Inicialize the map
         mapView = view.findViewById(R.id.map_view)
@@ -80,35 +88,77 @@ class MapFragment : Fragment() {
             }
             false
         }
-        val toggleButton1: Button = view.findViewById(R.id.togglebutton1)
+
+
+
+        val toggleButton1: Button = view.findViewById(R.id.togglebutton2)
         toggleButton1.setOnClickListener {
             // Lógica a ser executada quando o botão for clicado
             // Por exemplo:
             toggleButton1.isSelected = !toggleButton1.isSelected
             if (toggleButton1.isSelected) {
-                Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
+                val roadManager = OSRMRoadManager(this.requireContext())
+            val waypoints = ArrayList<GeoPoint>()
+
+            // Todos os pontos 15, 6, 16, 14, 10, 11, 14, 7
+            val itinerary1 = arrayListOf("15", "6", "16", "14", "11", "7")
+
+            for (itinerary in itinerary1) {
+                var coords = jsonParse.get_coordinates(itinerary);
+                val coords_array = coords.split(",").toTypedArray();
+                val lat = coords_array[0].toDouble();
+                val long = coords_array[1].toDouble();
+                waypoints.add(GeoPoint(lat, long))
+            }
+
+            lifecycleScope.launch {
+                val road = withContext(Dispatchers.IO) {
+                    roadManager.getRoad(waypoints)
+                }
+                val roadOverlay = RoadManager.buildRoadOverlay(road,Color.GREEN, 8F)
+                mapView.overlays.add(roadOverlay)
+                mapView.invalidate()
+            }
             } else {
-                // Ação quando o botão não estiver selecionado
-                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+                mapView.overlays.removeLast()
+                mapView.invalidate()
             }
         }
-        val toggleButton2: Button = view.findViewById(R.id.togglebutton2)
+
+        val toggleButton2: Button = view.findViewById(R.id.togglebutton1)
         toggleButton2.setOnClickListener {
+
             // Lógica a ser executada quando o botão for clicado
             // Por exemplo:
             toggleButton2.isSelected = !toggleButton2.isSelected
             if (toggleButton2.isSelected) {
-                Toast.makeText(context,  "ON" , Toast.LENGTH_SHORT).show()
+                val roadManager = OSRMRoadManager(this.requireContext())
+                val waypoints = ArrayList<GeoPoint>()
+
+                val itinerary2 = arrayListOf("7", "17")
+
+                for (itinerary in itinerary2) {
+                    var coords = jsonParse.get_coordinates(itinerary);
+                    val coords_array = coords.split(",").toTypedArray();
+                    val lat = coords_array[0].toDouble();
+                    val long = coords_array[1].toDouble();
+                    waypoints.add(GeoPoint(lat, long))
+                }
+
+                lifecycleScope.launch {
+                    val road = withContext(Dispatchers.IO) {
+                        roadManager.getRoad(waypoints)
+                    }
+                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.rgb(79, 79, 182), 8F)
+                    mapView.overlays.add(roadOverlay)
+                    mapView.invalidate()
+                }
             } else {
-                // Ação quando o botão não estiver selecionado
-                Toast.makeText(context,  "OFF" , Toast.LENGTH_SHORT).show()
+                mapView.overlays.removeLast()
+                mapView.invalidate()
             }
         }
 
-
-
-
-        val jsonParse = JsonParse(requireContext());
         val num = jsonParse.get_number();
 
         for (i in 0..num - 1) {
