@@ -91,7 +91,7 @@ class MapFragment : Fragment() {
 
 
 
-        val toggleButton1: Button = view.findViewById(R.id.togglebutton1)
+        val toggleButton1: Button = view.findViewById(R.id.togglebutton2)
         toggleButton1.setOnClickListener {
             // Lógica a ser executada quando o botão for clicado
             // Por exemplo:
@@ -125,7 +125,7 @@ class MapFragment : Fragment() {
             }
         }
 
-        val toggleButton2: Button = view.findViewById(R.id.togglebutton2)
+        val toggleButton2: Button = view.findViewById(R.id.togglebutton1)
         toggleButton2.setOnClickListener {
 
             // Lógica a ser executada quando o botão for clicado
@@ -149,7 +149,7 @@ class MapFragment : Fragment() {
                     val road = withContext(Dispatchers.IO) {
                         roadManager.getRoad(waypoints)
                     }
-                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.BLUE, 8F)
+                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.rgb(79, 79, 182), 8F)
                     mapView.overlays.add(roadOverlay)
                     mapView.invalidate()
                 }
