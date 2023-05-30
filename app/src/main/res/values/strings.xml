@@ -27,5 +27,9 @@
 
     <!-- Map -->
     <string name="plusButton">Botão detalhes</string>
+    <string name="o_inicio">O Inicio</string>
+    <string name="mestre_da_arquitetura_portuguesa_imprime_vida_em_arcos_ic_nicos_arcos_graciosos_e_s_lidos_transcendem_o_tempo_revelando_uma_beleza_singular">Mestre da arquitetura portuguesa, imprime vida em arcos icónicos. Arcos graciosos e sólidos, transcendem o tempo, revelando uma beleza singular.</string>
+    <string name="destaca_se_por_linhas_verticais_imponentes_magn_ficas_colunas_que_transmitem_grandiosidade_e_sofistica_o_em_seus_projetos_intemporais">Destaca-se por linhas verticais imponentes. Magníficas colunas que transmitem grandiosidade e sofisticação em seus projetos intemporais.</string>
+    <string name="as_suas_janelas_s_o_molduras_para_descobertas_revelam_paisagens_deslumbrantes_convidando_a_explorar_a_magia_al_m_de_suas_aberturas">As suas janelas são molduras para descobertas. Revelam paisagens deslumbrantes, convidando a explorar a magia além de suas aberturas.</string>
 
 </resources>
