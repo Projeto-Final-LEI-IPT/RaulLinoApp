@@ -2,8 +2,8 @@
 <resources>
     <!-- Cores -->
     <color name="black">#000000</color>
-    <color name="green">#155945</color>
-    <color name="ligh_green">#078C6B</color>
+    <color name="green">#155945</color>F
+    <color name="light_green">#078C6B</color>
     <color name="white">#FFFFFF</color>
     <color name="white_variant">#EAD8C1</color>
     <color name="yellow">#FFD683</color>

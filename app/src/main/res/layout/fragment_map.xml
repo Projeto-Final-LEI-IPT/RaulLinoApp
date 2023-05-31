@@ -52,7 +52,7 @@
             android:layout_width="49dp"
             android:layout_height="55dp"
             app:icon="@drawable/pontointeresse"
-            app:iconTint="@color/ligh_green" />
+            app:iconTint="@color/light_green" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
