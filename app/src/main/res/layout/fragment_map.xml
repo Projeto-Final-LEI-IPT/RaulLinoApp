@@ -44,7 +44,6 @@
             android:layout_height="55dp"
             android:text="button_label_private"
             app:icon="@drawable/pontointeresse"
-
             app:iconTint="@color/purple" />
 
         <Button
