@@ -275,16 +275,16 @@ class MapFragment : Fragment() {
             textInfoWindow.text = title
 
             // Botão + na infoWindow
-            val PlusButton: Button = mView.findViewById(R.id.plusButton)
-            PlusButton.setOnClickListener {
-                openBuildingDetailFragment(id_edificio)
-            }
+            //val PlusButton: Button = mView.findViewById(R.id.plusButton)
+            //PlusButton.setOnClickListener {
+            //    openBuildingDetailFragment(id_edificio)
+            //}
 
             // Clique do LinearLayout (InfoWindow)
-            /*val linearLayout: LinearLayout = mView.findViewById(R.id.infowindow)
+            val linearLayout: LinearLayout = mView.findViewById(R.id.infowindow)
             linearLayout.setOnClickListener {
                 openBuildingDetailFragment(id_edificio)
-            }*/
+            }
         }
 
         //Abre e trasmite o ID do edificio (id_edificio) para o fragment BuildingDetailFragment
