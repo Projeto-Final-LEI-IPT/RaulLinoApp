@@ -32,6 +32,7 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.infowindow.InfoWindow
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
@@ -135,24 +136,24 @@ class MapFragment : Fragment() {
                 val roadManager = OSRMRoadManager(this.requireContext())
                 val waypoints = ArrayList<GeoPoint>()
 
-                val itinerary2 = arrayListOf("7", "17")
+                //Rota 1 - Draw Polyline
+                val polyline = Polyline()
+                // Set polyline attributes (color, thickness, etc.)
+                // Set the color to #4F4FB6 -> Purple
+                polyline.color = 0xFF4F4FB6.toInt()
+                polyline.width = 8f
 
-                for (itinerary in itinerary2) {
-                    var coords = jsonParse.get_coordinates(itinerary);
-                    val coords_array = coords.split(",").toTypedArray();
-                    val lat = coords_array[0].toDouble();
-                    val long = coords_array[1].toDouble();
-                    waypoints.add(GeoPoint(lat, long))
-                }
+                polyline.addPoint(GeoPoint(39.461228, -8.198713))
+                polyline.addPoint(GeoPoint(39.461843, -8.198083))
+                polyline.addPoint(GeoPoint(39.461454, -8.197265))
+                polyline.addPoint(GeoPoint(39.462100, -8.196200))
+                polyline.addPoint(GeoPoint(39.462570, -8.196334))
+                polyline.addPoint(GeoPoint(39.463444, -8.196728))
+                polyline.addPoint(GeoPoint(39.464757, -8.197524))
 
-                lifecycleScope.launch {
-                    val road = withContext(Dispatchers.IO) {
-                        roadManager.getRoad(waypoints)
-                    }
-                    val roadOverlay = RoadManager.buildRoadOverlay(road,Color.rgb(79, 79, 182), 8F)
-                    mapView.overlays.add(roadOverlay)
-                    mapView.invalidate()
-                }
+                // Add the polyline to the map
+                mapView.overlayManager.add(polyline)
+                mapView.invalidate()
             } else {
                 mapView.overlays.removeLast()
                 mapView.invalidate()
