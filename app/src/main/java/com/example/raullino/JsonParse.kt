@@ -6,6 +6,9 @@ import java.io.IOException
 import java.io.InputStream
 
 // Classe para aceder ao repositório de informação sobre os edifícios
+
+var sp = SplashScreenActivity.returnStr()
+
 class JsonParse(val context: Context) {
 
     //Abrir o ficheiro json previamente para não ter de o abrir sempre que for necessário
