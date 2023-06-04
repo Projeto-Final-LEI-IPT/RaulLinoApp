@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.raullino.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.osmdroid.config.Configuration
+import android.content.Context
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -24,17 +25,17 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.splash_screen)
 
         supportActionBar?.hide()
+
         val btnPT= findViewById<Button>(R.id.btn_PT)
         val btnEN= findViewById<Button>(R.id.btn_EN)
 
 
         btnPT.setOnClickListener{
-            btn_flag="PT";
+            Flags.selectedFlag = "PT"
            startInit();
-
         }
         btnEN.setOnClickListener{
-            btn_flag="EN"
+            Flags.selectedFlag = "EN"
             startInit();
         }
 
@@ -42,7 +43,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun startInit() {
         val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
-
         startActivity(intent)
         finish()
     }
