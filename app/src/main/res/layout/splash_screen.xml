@@ -1,8 +1,35 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_EN"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_biography"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="-77dp"
+        android:text="Button"
+        tools:text="EN" />
+
+    <Button
+        android:id="@+id/btn_PT"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_biography"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="-77dp"
+        android:text="Button"
+        tools:text="PT" />
 
     <ImageView
         android:id="@+id/imageView3"
