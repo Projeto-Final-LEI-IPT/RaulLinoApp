@@ -13,12 +13,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.raullino.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.osmdroid.config.Configuration
-import android.content.Context
 
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var btn_flag="NA"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,7 +36,6 @@ class SplashScreenActivity : AppCompatActivity() {
             Flags.selectedFlag = "EN"
             startInit();
         }
-
         }
 
     private fun startInit() {
@@ -46,8 +43,4 @@ class SplashScreenActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-
-    
-
 }
