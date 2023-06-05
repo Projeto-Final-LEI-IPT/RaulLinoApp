@@ -20,7 +20,7 @@
     <!-- Nota Biográfica -->
     <string name="nb_titulo">Nota Biografica</string>
     <string name="nb_dados"><b>Nome completo:</b>\nRaul Lino da Silva\n<b>Nascimento:</b>\n21 de novembro de 1879, Lisboa\n<b>Morte:</b>\n13 de julho de 1974 (94 anos), Lisboa</string>
-    <string name="nb_biografia">Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadores correntes europeias do início do séc. XX. [2]Com 70 anos de atividade profissional, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, ele também foi um homem com uma vasta obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal.</string>
+    <string name="nb_biografia">Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadores correntes europeias do início do séc. XX. Com 70 anos de atividade profissional, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, ele também foi um homem com uma vasta obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal.</string>
     <string name="nb_descFoto">Retrado de Raul Lino</string>
 
     <string name="raul_Lino">Raul Lino</string>
