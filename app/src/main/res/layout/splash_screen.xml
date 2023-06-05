@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,5 +24,33 @@
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintTop_toBottomOf="@id/imageView3" />
+
+    <ImageView
+        android:id="@+id/btn_EN"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_alignTop="@+id/text_biography"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="31dp"
+        app:srcCompat="@drawable/gb" />
+
+    <ImageView
+        android:id="@+id/btn_PT"
+        android:layout_width="wrap_content"
+        android:layout_height="81dp"
+        android:layout_alignTop="@+id/text_biography"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="274dp"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@mipmap/pt_foreground" />
 
 </RelativeLayout>
