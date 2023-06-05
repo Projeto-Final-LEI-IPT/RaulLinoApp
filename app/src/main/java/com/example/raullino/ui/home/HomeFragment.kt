@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.raullino.Flags
@@ -34,13 +35,11 @@ class HomeFragment : Fragment() {
         val TextView2 = binding.textView2
         val TextView = binding.textView
 
-
-
         if(Flags.selectedFlag=="EN"){
-            TextView4.text = "The beginning"
-            TextView.text="A master of Portuguese architecture, he imprints life in iconic arches. Graceful and solid arches transcend time, revealing a singular beauty."
-            TextView3.text="It stands out for its imposing vertical lines. Magnificent columns that convey grandeur and sophistication in their timeless designs";
-            TextView2.text="Its windows are frames for discovery. They reveal breathtaking landscapes, inviting you to explore the magic beyond their openings.";
+            TextView4.text =resources.getString(R.string.o_inicio_EN)
+            TextView.text=resources.getString(R.string.as_suas_janelas_s_o_molduras__EN)
+            TextView3.text=resources.getString(R.string.destaca_se_por_linhas_verticais__EN)
+            TextView2.text=resources.getString(R.string.mestre_da_arquitetura_portuguesa_EN)
         }
 
         return root

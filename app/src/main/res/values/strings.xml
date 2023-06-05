@@ -32,4 +32,13 @@
     <string name="destaca_se_por_linhas_verticais_imponentes_magn_ficas_colunas_que_transmitem_grandiosidade_e_sofistica_o_em_seus_projetos_intemporais">Destaca-se por linhas verticais imponentes. Magníficas colunas que transmitem grandiosidade e sofisticação em seus projetos intemporais.</string>
     <string name="as_suas_janelas_s_o_molduras_para_descobertas_revelam_paisagens_deslumbrantes_convidando_a_explorar_a_magia_al_m_de_suas_aberturas">As suas janelas são molduras para descobertas. Revelam paisagens deslumbrantes, convidando a explorar a magia além de suas aberturas.</string>
 
+    <!-- Texto estático -->
+    <string name="mestre_da_arquitetura_portuguesa_EN">A master of Portuguese architecture, he imprints life in iconic arches. Graceful and solid arches transcend time, revealing a singular beauty.</string>
+    <string name="as_suas_janelas_s_o_molduras__EN">Its windows are frames for discovery. They reveal breathtaking landscapes, inviting you to explore the magic beyond their openings.</string>
+    <string name="destaca_se_por_linhas_verticais__EN">It stands out for its imposing vertical lines. Magnificent columns that convey grandeur and sophistication in their timeless designs</string>
+    <string name="o_inicio_EN">The beginning</string>
+    <string name="nb_biografia_EN">He was a unique personality on the Portuguese art scene, largely due to the fact that he managed to articulate the Portuguese tradition with the innovative European currents of the early 20th century. With 70 years of professional activity, Lino is the author of more than 700 works. It is also important to mention that despite his range of projects, he was also a man with a vast theoretical or written work, which became very determinant, for his followers over decades in Portugal.</string>
+    <string name="nb_titulo_EN">Biographical Note</string>
+    <string name="nb_dados_EN"><b>Full name:</b>\nRaul Lino da Silva\n<b>Birth:</b>\nNovember 21, 1879, Lisbon\n<b>Death:</b>\nJuly 13, 1974 (94 years old), Lisbon</string>
+
 </resources>
