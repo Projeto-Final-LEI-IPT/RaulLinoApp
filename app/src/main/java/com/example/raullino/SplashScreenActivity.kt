@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,8 +25,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val btnPT= findViewById<Button>(R.id.btn_PT)
-        val btnEN= findViewById<Button>(R.id.btn_EN)
+        val btnPT= findViewById<ImageView>(R.id.btn_PT)
+        val btnEN= findViewById<ImageView>(R.id.btn_EN)
 
 
         btnPT.setOnClickListener{
