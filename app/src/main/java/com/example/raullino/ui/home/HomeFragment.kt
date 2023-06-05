@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.raullino.Flags
 import com.example.raullino.R
 import com.example.raullino.databinding.FragmentHomeBinding
 
@@ -32,11 +33,11 @@ class HomeFragment : Fragment() {
         val TextView3 = binding.textView3
         val TextView2 = binding.textView2
         val TextView = binding.textView
-        val fw =he
 
 
-        if(flag){
-            TextView4.text = "The begining"
+
+        if(Flags.selectedFlag=="EN"){
+            TextView4.text = "The beginning"
             TextView.text="A master of Portuguese architecture, he imprints life in iconic arches. Graceful and solid arches transcend time, revealing a singular beauty."
             TextView3.text="It stands out for its imposing vertical lines. Magnificent columns that convey grandeur and sophistication in their timeless designs";
             TextView2.text="Its windows are frames for discovery. They reveal breathtaking landscapes, inviting you to explore the magic beyond their openings.";
