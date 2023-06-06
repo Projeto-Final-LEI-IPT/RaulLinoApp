@@ -3,6 +3,7 @@ package com.example.raullino.ui.map
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -158,6 +160,19 @@ class MapFragment : Fragment() {
                 mapView.overlays.removeLast()
                 mapView.invalidate()
             }
+        }
+
+        // Get screen orientation
+        val orientation = resources.configuration.orientation
+        // If landscape, hide the header
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            val header = view.findViewById<ConstraintLayout>(R.id.include)
+            header.visibility = View.GONE
+            val decorView = requireActivity().window.decorView
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        }else{
+            val header = view.findViewById<ConstraintLayout>(R.id.include)
+            header.visibility = View.VISIBLE
         }
 
         val num = jsonParse.get_number();
