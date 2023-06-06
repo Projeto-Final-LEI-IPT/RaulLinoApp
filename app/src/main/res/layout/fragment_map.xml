@@ -44,8 +44,7 @@
             android:layout_height="55dp"
             android:text="button_label_private"
             app:icon="@drawable/pontointeresse"
-
-            app:iconTint="#4F4FB6" />
+            app:iconTint="@color/purple" />
 
         <Button
             android:id="@+id/togglebutton2"
@@ -53,7 +52,7 @@
             android:layout_width="49dp"
             android:layout_height="55dp"
             app:icon="@drawable/pontointeresse"
-            app:iconTint="@color/ligh_green" />
+            app:iconTint="@color/light_green" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 

@@ -1,18 +1,29 @@
 package com.example.raullino
 
 import android.content.Context
+import android.util.Log
+import com.example.raullino.Flags.Companion.selectedFlag
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
 
 // Classe para aceder ao repositório de informação sobre os edifícios
+
 class JsonParse(val context: Context) {
+    var filename =""
+    val selectedFlag = Flags.selectedFlag
 
     //Abrir o ficheiro json previamente para não ter de o abrir sempre que for necessário
     val json: String? = try {
-        val inputStream: InputStream = context.assets.open("data.json")
+        if (selectedFlag == "PT") {
+            filename = "data.json"
+        } else {
+            filename = "data-en.json"
+        }
+        val inputStream: InputStream = context.assets.open(filename)
         inputStream.bufferedReader().use { it.readText() }
-    } catch (e: IOException) {
+    } catch (ex: IOException) {
+        ex.printStackTrace()
         null
     }
 
