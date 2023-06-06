@@ -20,7 +20,7 @@
     <!-- Nota Biográfica -->
     <string name="nb_titulo">Nota Biografica</string>
     <string name="nb_dados"><b>Nome completo:</b>\nRaul Lino da Silva\n<b>Nascimento:</b>\n21 de novembro de 1879, Lisboa\n<b>Morte:</b>\n13 de julho de 1974 (94 anos), Lisboa</string>
-    <string name="nb_biografia">Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadores correntes europeias do início do séc. XX. [2]Com 70 anos de atividade profissional, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, ele também foi um homem com uma vasta obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal.</string>
+    <string name="nb_biografia">Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadores correntes europeias do início do séc. XX. Com 70 anos de atividade profissional, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, ele também foi um homem com uma vasta obra teórica ou escrita, o que se tornou muito determinante, para os seus seguidores aos longo de décadas em Portugal.</string>
     <string name="nb_descFoto">Retrado de Raul Lino</string>
 
     <string name="raul_Lino">Raul Lino</string>
@@ -31,5 +31,14 @@
     <string name="mestre_da_arquitetura_portuguesa_imprime_vida_em_arcos_ic_nicos_arcos_graciosos_e_s_lidos_transcendem_o_tempo_revelando_uma_beleza_singular">Mestre da arquitetura portuguesa, imprime vida em arcos icónicos. Arcos graciosos e sólidos, transcendem o tempo, revelando uma beleza singular.</string>
     <string name="destaca_se_por_linhas_verticais_imponentes_magn_ficas_colunas_que_transmitem_grandiosidade_e_sofistica_o_em_seus_projetos_intemporais">Destaca-se por linhas verticais imponentes. Magníficas colunas que transmitem grandiosidade e sofisticação em seus projetos intemporais.</string>
     <string name="as_suas_janelas_s_o_molduras_para_descobertas_revelam_paisagens_deslumbrantes_convidando_a_explorar_a_magia_al_m_de_suas_aberturas">As suas janelas são molduras para descobertas. Revelam paisagens deslumbrantes, convidando a explorar a magia além de suas aberturas.</string>
+
+    <!-- Texto estático -->
+    <string name="mestre_da_arquitetura_portuguesa_EN">A master of Portuguese architecture, he imprints life in iconic arches. Graceful and solid arches transcend time, revealing a singular beauty.</string>
+    <string name="as_suas_janelas_s_o_molduras__EN">Its windows are frames for discovery. They reveal breathtaking landscapes, inviting you to explore the magic beyond their openings.</string>
+    <string name="destaca_se_por_linhas_verticais__EN">It stands out for its imposing vertical lines. Magnificent columns that convey grandeur and sophistication in their timeless designs</string>
+    <string name="o_inicio_EN">The beginning</string>
+    <string name="nb_biografia_EN">He was a unique personality in the Portuguese art scene, largely due to the fact that he managed to articulate the Portuguese tradition with the innovative European currents of the early 20th century. With 70 years of professional activity, Lino is the author of more than 700 works. It is also important to mention that despite his range of projects, he was also a man with a vast theoretical or written work, which became very determinant, for his followers over decades in Portugal.</string>
+    <string name="nb_titulo_EN">Biographical Note</string>
+    <string name="nb_dados_EN"><b>Full name:</b>\nRaul Lino da Silva\n<b>Birth:</b>\nNovember 21, 1879, Lisbon\n<b>Death:</b>\nJuly 13, 1974 (94 years old), Lisbon</string>
 
 </resources>
