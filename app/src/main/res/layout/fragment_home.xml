@@ -34,58 +34,44 @@
             android:layout_marginBottom="40dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TitleLine"
-                android:text="@string/o_inicio"
-                android:textColor="#000000"
-                android:layout_marginBottom="30dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textSize="25sp"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"
                     android:contentDescription="@string/home_arco"
-                    android:src="@drawable/arco"
-                    android:layout_marginBottom="50dp"
+                    android:src="@drawable/homeheader"
+                    android:layout_marginBottom="30dp"
                     android:adjustViewBounds="true"
-                    android:maxHeight="500dp"
+                    android:scaleType="centerCrop"
+                    android:maxHeight="125dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="10dp"
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/fira_sans"
-                    android:text="@string/mestre_da_arquitetura_portuguesa_imprime_vida_em_arcos_ic_nicos_arcos_graciosos_e_s_lidos_transcendem_o_tempo_revelando_uma_beleza_singular"
-                    android:layout_marginBottom="50dp"
+                    android:justificationMode="inter_word"
+                    android:text="@string/esta_app_foi_desenvolvida_no_mbito_de_um_projeto_do_centro_de_tecnologia_restauro_e_valoriza_o_das_artes_techn_art_do_instituto_polit_cnico_de_tomar_financiado_pela_funda_o_para_ci_ncia_e_tecnologia_fct_e_com_a_parceria_da_c_mara_municipal_de_abrantes_e_da_ordem_dos_arquitetos_informa_es_adicionais_sobre_o_projeto_http_www_techneart_ipt_pt_raulino"
                     android:textColor="#000000"
                     style="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+                    android:textStyle="normal"/>
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fira_sans"
+                android:justificationMode="inter_word"
+                android:textColorLink="@color/green"
+                android:text="@string/hyperlink"
+                android:textColor="#000000"
+                android:layout_marginBottom="100dp"
+                style="@android:style/TextAppearance.DeviceDefault.Small"
+                android:textStyle="normal"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -93,78 +79,54 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/iptlogo"
+                    android:maxHeight="100dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:contentDescription="@string/home_vertical"
-                    android:src="@drawable/vertical"
+                    android:src="@drawable/techartlogo"
+                    android:maxHeight="100dp"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/fira_sans"
-                    android:text="@string/destaca_se_por_linhas_verticais_imponentes_magn_ficas_colunas_que_transmitem_grandiosidade_e_sofistica_o_em_seus_projetos_intemporais"
-                    android:textColor="#000000"
-                    android:layout_marginBottom="50dp"
-                    style="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="180dp">
-
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"
-                    android:contentDescription="@string/home_janela"
-                    android:src="@drawable/janela"
-                    android:layout_marginBottom="50dp"
+                    android:layout_weight="0.3"
+                    android:maxHeight="70dp"
+                    android:src="@drawable/fctlogo"
                     android:adjustViewBounds="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/fira_sans"
-                    android:text="@string/as_suas_janelas_s_o_molduras_para_descobertas_revelam_paisagens_deslumbrantes_convidando_a_explorar_a_magia_al_m_de_suas_aberturas"
-                    android:layout_marginBottom="50dp"
-                    android:textColor="#000000"
-                    style="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView2" />
-
             </LinearLayout>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fira_sans"
+                android:justificationMode="inter_word"
+                android:text="@string/este_projeto_financiado_por_fundos_nacionais_atrav_s_da_fct_no_mbito_da_unidade_de_i_d_techn_art_com_a_refer_ncia_uidb_05488_2020"
+                android:textColor="#000000"
+                android:layout_marginBottom="200dp"
+                style="@android:style/TextAppearance.DeviceDefault.Small"
+                android:textStyle="normal"/>
 
         </LinearLayout>
 
