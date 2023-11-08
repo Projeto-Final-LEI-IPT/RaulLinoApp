@@ -28,13 +28,12 @@ class BiographyFragment : Fragment() {
         val root: View = binding.root
 
         val TextView = binding.biografia
+        val TextView_2 = binding.biografia2
         val TextView2 = binding.titulo
-        val TextView3 = binding.dados
 
         if(Flags.selectedFlag=="EN"){
-            TextView.text=resources.getString(R.string.nb_biografia_EN)
-            val htmlText = "<b>Full name:</b><br/>Raul Lino da Silva<br/><b>Birth:</b> November 21, 1879, Lisbon<br/><b>Death:</b><br/>July 13, 1974 (94 years old), Lisbon"
-            TextView3.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_LEGACY)
+            TextView.text=resources.getString(R.string.nb_biografia1_EN)
+            TextView_2.text=resources.getString(R.string.nb_biografia2_EN)
             TextView2.text=resources.getString(R.string.nb_titulo_EN);
         }
         return root

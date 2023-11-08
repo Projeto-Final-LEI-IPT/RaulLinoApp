@@ -47,14 +47,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
                 <ImageView
                     android:id="@+id/fotoRetrato"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.55"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/nb_descFoto"
                     android:src="@drawable/raullino_retrato" />
@@ -64,7 +65,7 @@
                     style="@style/BodyText"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.4"
+                    android:layout_weight="0.45"
                     android:text="@string/nb_dados"
                     android:textSize="14sp"
                     android:textStyle="normal" />
@@ -74,10 +75,19 @@
                 android:id="@+id/biografia"
                 style="@style/BodyText"
                 android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nb_biografia1"
+                android:textAlignment="textStart"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/biografia2"
+                style="@style/BodyText"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="180dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nb_biografia"
+                android:text="@string/nb_biografia2"
                 android:textAlignment="textStart"
                 android:textSize="16sp" />
 
