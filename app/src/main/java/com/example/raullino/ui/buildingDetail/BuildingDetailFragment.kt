@@ -17,6 +17,9 @@ class BuildingDetailFragment : Fragment() {
 
     private var _binding: FragmentBuildingDetailBinding? = null
     lateinit var textTitle: TextView
+    lateinit var textYear: TextView
+    lateinit var textLocal: TextView
+    lateinit var textType: TextView
     lateinit var textInfo: TextView
     private lateinit var imageViewPagerAdapter: ImageViewPagerAdapter
     val imageDrawableList = ArrayList<Int>()
@@ -58,8 +61,15 @@ class BuildingDetailFragment : Fragment() {
         val jsonParse = JsonParse(requireContext())
 
         textTitle = binding.textTitle
+        textYear = binding.textYear
+        textLocal = binding.textLocal
+        textType = binding.textType
         textInfo = binding.textInfo
+
         textTitle.text = jsonParse.get_title(buildingId)
+        textYear.text = jsonParse.get_year(buildingId)
+        textLocal.text = jsonParse.get_location(buildingId)
+        textType.text = jsonParse.get_typology(buildingId)
         textInfo.text = jsonParse.get_info(buildingId)
 
         var imagesArray = jsonParse.get_image(buildingId)
