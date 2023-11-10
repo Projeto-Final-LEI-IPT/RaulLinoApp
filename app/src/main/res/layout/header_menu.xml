@@ -28,11 +28,24 @@
         app:layout_constraintVertical_bias="0.018" />
 
     <TextView
+        android:id="@+id/textAbrantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="52dp"
+        android:fontFamily="@font/raul_lino_fonte"
+        android:text="Abrantes"
+        android:textColor="#067C68"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRaulLino" />
+
+    <TextView
         android:id="@+id/textRaulLino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
         android:fontFamily="@font/raul_lino_fonte"
         android:text="@string/raul_lino"
         android:textColor="#067C68"
