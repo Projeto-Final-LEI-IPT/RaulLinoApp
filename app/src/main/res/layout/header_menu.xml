@@ -28,44 +28,31 @@
         app:layout_constraintVertical_bias="0.018" />
 
     <TextView
-        android:id="@+id/textAbrantes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="52dp"
-        android:fontFamily="@font/raul_lino_fonte"
-        android:text="Abrantes"
-        android:textColor="#067C68"
-        android:textSize="11dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textRaulLino" />
-
-    <TextView
-        android:id="@+id/textRaulLino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
-        android:fontFamily="@font/raul_lino_fonte"
-        android:text="@string/raul_lino"
-        android:textColor="#067C68"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
         android:id="@+id/textRaulLino2"
         android:layout_width="177dp"
         android:layout_height="48dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/raul_lino_fonte"
+        android:fontFamily="@font/raul_lino_fonte_acento"
         android:text="@string/itinerary"
         android:textColor="#000000"
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView_abrantes"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:src="@drawable/raullino_logo_abrantes"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toEndOf="@+id/textRaulLino2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
