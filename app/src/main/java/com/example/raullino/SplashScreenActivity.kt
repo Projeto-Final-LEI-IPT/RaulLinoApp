@@ -37,11 +37,10 @@ class SplashScreenActivity : AppCompatActivity() {
             Flags.selectedFlag = "EN"
             startInit();
         }
-        }
+    }
 
     private fun startInit() {
         val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
         startActivity(intent)
-        finish()
     }
 }

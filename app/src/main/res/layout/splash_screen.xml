@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView3"
-        android:fontFamily="@font/raul_lino_fonte"
+        android:fontFamily="@font/raul_lino_fonte_acento"
         android:gravity="center"
         android:text="@string/raul_Lino"
         android:textAlignment="center"

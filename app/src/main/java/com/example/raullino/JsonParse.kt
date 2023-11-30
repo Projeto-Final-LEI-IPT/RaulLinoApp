@@ -68,11 +68,16 @@ class JsonParse(val context: Context) {
         val json_array = json_object.getJSONArray("dados")
         val number = json_array.length()
         var year = ""
+        if (selectedFlag == "PT") {
+            year = "Ano do Projeto: "
+        } else {
+            year = "Year of the Project: "
+        }
         for (i in 0 until number) {
             val json_object_aux = json_array.getJSONObject(i)
             val id_aux = json_object_aux.getString("id")
             if (id_aux == id) {
-                year = json_object_aux.getString("ano")
+                year += json_object_aux.getString("ano")
             }
         }
         return year
@@ -85,11 +90,16 @@ class JsonParse(val context: Context) {
         val json_array = json_object.getJSONArray("dados")
         val number = json_array.length()
         var location = ""
+        if (selectedFlag == "PT") {
+            location = "Localização: "
+        } else {
+            location = "Location: "
+        }
         for (i in 0 until number) {
             val json_object_aux = json_array.getJSONObject(i)
             val id_aux = json_object_aux.getString("id")
             if (id_aux == id) {
-                location = json_object_aux.getString("localizacao")
+                location += json_object_aux.getString("localizacao")
             }
         }
         return location
@@ -123,11 +133,16 @@ class JsonParse(val context: Context) {
         val json_array = json_object.getJSONArray("dados")
         val number = json_array.length()
         var typology = ""
+        if (selectedFlag == "PT") {
+            typology = "Tipologia: "
+        } else {
+            typology = "Typology: "
+        }
         for (i in 0 until number) {
             val json_object_aux = json_array.getJSONObject(i)
             val id_aux = json_object_aux.getString("id")
             if (id_aux == id) {
-                typology = json_object_aux.getString("tipologia")
+                typology += json_object_aux.getString("tipologia")
             }
         }
         return typology
