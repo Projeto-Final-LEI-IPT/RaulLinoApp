@@ -5,20 +5,20 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.raullino.JsonParse
@@ -30,6 +30,8 @@ import kotlinx.coroutines.withContext
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import org.osmdroid.bonuspack.routing.RoadManager
 import com.google.android.material.button.MaterialButtonToggleGroup
+import kotlinx.coroutines.CoroutineScope
+import org.osmdroid.bonuspack.routing.Road
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -42,6 +44,13 @@ class MapFragment : Fragment() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     private lateinit var mapView: MapView
     private lateinit var Mbtg:MaterialButtonToggleGroup
+
+    private var waypoints: ArrayList<GeoPoint>? = null
+    private lateinit var roadManager: RoadManager
+    private var instructionsMarkers: ArrayList<Marker> = ArrayList()
+    private lateinit  var myLocationoverlay:MyLocationNewOverlay
+    private var road_Overlay: Polyline? = null
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -58,7 +67,7 @@ class MapFragment : Fragment() {
         mapView.controller.setZoom(18.0)
         mapView.controller.setCenter(GeoPoint(39.461563, -8.197074))
 
-        val myLocationoverlay = MyLocationNewOverlay(mapView)
+        myLocationoverlay = MyLocationNewOverlay(mapView)
         myLocationoverlay.enableMyLocation()
         mapView.overlays.add(myLocationoverlay)
 
@@ -92,8 +101,7 @@ class MapFragment : Fragment() {
             false
         }
 
-
-
+        // Rota Verde
         val toggleButton1: Button = view.findViewById(R.id.togglebutton2)
         toggleButton1.setOnClickListener {
             // Lógica a ser executada quando o botão for clicado
@@ -128,6 +136,7 @@ class MapFragment : Fragment() {
             }
         }
 
+        //Rota Azul
         val toggleButton2: Button = view.findViewById(R.id.togglebutton1)
         toggleButton2.setOnClickListener {
 
@@ -190,6 +199,9 @@ class MapFragment : Fragment() {
 
         mapView.setOnTouchListener(mapTouchListener)
 
+        // Create a roadManager instance using the OSRMRoadManager
+        roadManager = OSRMRoadManager(activity)
+
         return view
     }
 
@@ -212,7 +224,6 @@ class MapFragment : Fragment() {
             )
         }
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
@@ -239,9 +250,8 @@ class MapFragment : Fragment() {
         var marker = Marker(mapView)
 
         // Cria e coloca a custom InfoWindow para os markers
-        val customInfoWindow = CustomInfoWindow(R.layout.info_window, mapView, title, id_edificio) { marker ->
+        val customInfoWindow = CustomInfoWindow(R.layout.info_window, mapView, title, id_edificio, p1) { marker ->
             // Click event na InfoWindow
-
         }
         marker.setOnMarkerClickListener { _, _ ->
             // Fecha a InfoWindow atualmente aberta
@@ -274,6 +284,7 @@ class MapFragment : Fragment() {
         mapView: MapView,
         private val title: String,
         private val id_edificio: String,
+        private val point: GeoPoint,
         param: (Any) -> Unit) : InfoWindow(layoutResId, mapView) {
 
         private lateinit var plusButton: Button
@@ -291,10 +302,11 @@ class MapFragment : Fragment() {
             textInfoWindow.text = title
 
             // Botão + na infoWindow
-            //val PlusButton: Button = mView.findViewById(R.id.plusButton)
-            //PlusButton.setOnClickListener {
-            //    openBuildingDetailFragment(id_edificio)
-            //}
+            val PlusButton: ImageView = mView.findViewById(R.id.btn_caminho)
+            PlusButton.setOnClickListener {
+               // mostra rota
+                roadRoute(myLocationoverlay.myLocation,point)
+            }
 
             // Clique do LinearLayout (InfoWindow)
             val linearLayout: LinearLayout = mView.findViewById(R.id.infowindow)
@@ -314,5 +326,132 @@ class MapFragment : Fragment() {
         }
     }
 
+    private fun roadRoute(myLocation: GeoPoint, location: GeoPoint) {
+        var getRoute = true
+        //Verify if the user is getting far way from the route
+      /*  if (road_Overlay != null) {
+            getRoute = !(road_Overlay!!.isCloseTo(GeoPoint(myLocation), 50.0, mapView))
+        }*/
 
+        //If the user is too far away or if the roadOverlay is null get the route
+        if (getRoute) {
+            // Create a list of waypoints for the route
+            waypoints = ArrayList()
+            waypoints!!.add(
+                GeoPoint(myLocation)
+            )
+            waypoints!!.add(
+                location
+            )
+            // Create a coroutine scope
+            val coroutineScope = CoroutineScope(Dispatchers.IO)
+
+            // Launch a coroutine within the scope
+            coroutineScope.launch {
+                // Perform network request on a background thread
+                val road = roadManager.getRoad(waypoints)
+
+                // Use withContext to switch to the main thread for UI updates
+                withContext(Dispatchers.Main) {
+                    //Check road status
+                    if (road.mStatus != Road.STATUS_OK) {
+                        var text = activity?.getString(R.string.error_route)
+                        if (road.mStatus == Road.STATUS_INVALID) {
+                            text += " " + activity?.getString(R.string.error_route_invalid)
+                        } else if (road.mStatus == Road.STATUS_TECHNICAL_ISSUE) {
+                            text += " " + activity?.getString(R.string.error_route_technical_issues)
+                        }
+                        Toast.makeText(
+                            activity, text, Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        road.mBoundingBox
+                        road.mLength
+
+                    }
+                    //Remove the overlays
+                    for (i in 0 until instructionsMarkers.size) {
+                        mapView.overlays.remove(instructionsMarkers[i])
+                    }
+                    //Remove the instructionsMarkers from the array by replacing it with a new one
+                    instructionsMarkers = ArrayList()
+                    val nodeIcon = ResourcesCompat.getDrawable(
+                        resources, R.drawable.ic_baseline_circle_24, null
+                    )
+                    //Get instructions for the route
+                    for (i in 0 until road.mNodes.size) {
+                        val node = road.mNodes[i]
+                        val instructMarker = Marker(mapView)
+                        instructMarker.position = node.mLocation
+                        instructMarker.icon = nodeIcon
+                        instructMarker.title = "$i"
+                        instructMarker.subDescription = Road.getLengthDurationText(
+                            activity, node.mLength, node.mDuration
+                        )
+                        instructMarker.snippet = node.mInstructions
+                        instructionsMarkers.add(instructMarker)
+
+                        val icon = getManeuverIcon(node.mManeuverType)
+                        instructMarker.image = icon
+                        mapView.overlays.add(instructMarker)
+                    }
+//                    locationRoute = location
+                    // Remove old route overlay
+                    if (road_Overlay != null) {
+                        mapView.overlays.remove(road_Overlay)
+                    }
+
+                    //mapView.overlays.removeLast()
+                    // Display the new route on the map
+                    road_Overlay = RoadManager.buildRoadOverlay(road)
+                        mapView.overlays.add(road_Overlay)
+                    mapView.invalidate()
+                }
+            }
+        }
+    }
+
+    /**
+     * Get the maneuver icon
+     */
+    private fun getManeuverIcon(value: Int): Drawable? {
+        return when (value) {
+            1 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_continue) // Continue
+            6 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_slight_right
+            ) // Slight right
+            7 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_turn_right) // Right
+            8 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_sharp_right
+            ) // Sharp right
+            12 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_u_turn) // U-turn
+            5 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_sharp_left
+            ) // Sharp left
+            4 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_turn_left) // Left
+            3 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_slight_left
+            ) // Slight left
+            24 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_arrived
+            ) // Arrived (at waypoint)
+            27 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_roundabout
+            ) // Round-about, 1st exit
+            28 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_roundabout
+            ) // 2nd exit, etc ...
+            29 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_roundabout)
+            30 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_roundabout)
+            31 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_roundabout)
+            32 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_roundabout)
+            33 -> ContextCompat.getDrawable(requireActivity(), R.drawable.ic_roundabout)
+            34 -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_roundabout
+            )
+            else -> ContextCompat.getDrawable(
+                requireActivity(), R.drawable.ic_empty
+            )
+        }
+    }
 }

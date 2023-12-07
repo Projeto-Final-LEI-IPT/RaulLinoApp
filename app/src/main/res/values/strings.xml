@@ -48,4 +48,7 @@
     <string name="esta_app_EN"><![CDATA[This app was developed as part of a project of the Centro de Tecnologia, Restauro e Valorização das Artes, Techn&Art, of the Instituto Politécnico de Tomar, funded by the Fundação para Ciência e Tecnologia (FCT), and with the partnership of the Câmara Municipal de Abrantes and Ordem dos Arquitetos.]]></string>
     <string name="este_projeto_EN"><![CDATA[This project is financed by national funds, through FCT, within the R&D unit TECHN&ART, with the reference UIDB/05488/2020.]]></string>
     <string name="hyperlink_EN">\nFurther information on the project:\n<a href="http://www.techneart.ipt.pt/raulino">http://www.techneart.ipt.pt/raulino</a></string>
+    <string name="error_route">Erro ao carregar a rota</string>
+    <string name="error_route_invalid">Rota inclui estradas por acabar</string>
+    <string name="error_route_technical_issues">Erros técnicos</string>
 </resources>
