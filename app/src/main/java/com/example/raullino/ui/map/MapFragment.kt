@@ -4,7 +4,10 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,14 +27,14 @@ import androidx.lifecycle.lifecycleScope
 import com.example.raullino.JsonParse
 import com.example.raullino.R
 import com.example.raullino.ui.buildingDetail.BuildingDetailFragment
+import com.google.android.material.button.MaterialButtonToggleGroup
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
-import org.osmdroid.bonuspack.routing.RoadManager
-import com.google.android.material.button.MaterialButtonToggleGroup
-import kotlinx.coroutines.CoroutineScope
 import org.osmdroid.bonuspack.routing.Road
+import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -39,6 +42,7 @@ import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.infowindow.InfoWindow
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
+
 
 class MapFragment : Fragment() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
@@ -68,6 +72,13 @@ class MapFragment : Fragment() {
         mapView.controller.setCenter(GeoPoint(39.461563, -8.197074))
 
         myLocationoverlay = MyLocationNewOverlay(mapView)
+//        myLocationoverlay.enableFollowLocation()
+//        val currentDraw = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_circle_24, null)
+//        var currentIcon: Bitmap? = null
+//        if (currentDraw != null) {
+//            currentIcon = drawableToBitmap(currentDraw)
+//        }
+//        myLocationoverlay.setPersonIcon(currentIcon)
         myLocationoverlay.enableMyLocation()
         mapView.overlays.add(myLocationoverlay)
 
@@ -367,7 +378,6 @@ class MapFragment : Fragment() {
                     } else {
                         road.mBoundingBox
                         road.mLength
-
                     }
                     //Remove the overlays
                     for (i in 0 until instructionsMarkers.size) {
@@ -403,7 +413,7 @@ class MapFragment : Fragment() {
 
                     //mapView.overlays.removeLast()
                     // Display the new route on the map
-                    road_Overlay = RoadManager.buildRoadOverlay(road)
+                    road_Overlay = RoadManager.buildRoadOverlay(road,Color.BLACK, 5F)
                         mapView.overlays.add(road_Overlay)
                     mapView.invalidate()
                 }
@@ -453,5 +463,32 @@ class MapFragment : Fragment() {
                 requireActivity(), R.drawable.ic_empty
             )
         }
+    }
+
+    fun drawableToBitmap(drawable: Drawable): Bitmap? {
+        var bitmap: Bitmap? = null
+        if (drawable is BitmapDrawable) {
+            val bitmapDrawable = drawable
+            if (bitmapDrawable.bitmap != null) {
+                return bitmapDrawable.bitmap
+            }
+        }
+        bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
+            Bitmap.createBitmap(
+                1,
+                1,
+                Bitmap.Config.ARGB_8888
+            ) // Single color bitmap will be created of 1x1 pixel
+        } else {
+            Bitmap.createBitmap(
+                drawable.intrinsicWidth,
+                drawable.intrinsicHeight,
+                Bitmap.Config.ARGB_8888
+            )
+        }
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+        drawable.draw(canvas)
+        return bitmap
     }
 }

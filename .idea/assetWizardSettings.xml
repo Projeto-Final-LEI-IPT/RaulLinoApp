@@ -315,8 +315,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_circle_24" />
-                            <entry key="sourceFile" value="C:\Users\hugo2\Downloads\pt.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="localizacao_amarela" />
+                            <entry key="sourceFile" value="C:\Users\anita\OneDrive - Instituto Politécnico de Tomar\IPT_LEI\ProjetoFinal_2023_2024\Marca Gráfica - Ana reunião 23 julho\icones svg\localização amarela.svg" />
                           </map>
                         </option>
                       </PersistentState>

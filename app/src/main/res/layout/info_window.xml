@@ -7,6 +7,15 @@
     android:id="@+id/infowindow"
     android:background="#66000000">
 
+        <ImageView
+            android:id="@+id/btn_caminho"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/ic_launcher_background"
+            android:backgroundTintMode="add"
+            app:srcCompat="@drawable/localizacao_amarela" />
+
         <TextView
             android:id="@+id/textInfoWindow"
             android:layout_width="wrap_content"
@@ -21,20 +30,5 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             />
-
-        <ImageView
-            android:id="@+id/btn_caminho"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@color/ic_launcher_background"
-            android:backgroundTint="@color/ic_launcher_background"
-            android:backgroundTintMode="add"
-            app:srcCompat="@drawable/icon_caminho" />
-
-
-
-
-
 
 </LinearLayout>
