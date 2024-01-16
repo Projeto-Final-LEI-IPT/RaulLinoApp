@@ -2,7 +2,7 @@
     "dados": [
         {
             "id": 1,
-            "titulo": "Rua Luís de Camões",
+            "titulo": "Moradia na Rua Luís de Camões",
             "ano": "1919",
             "localizacao": "Rua Luís de Camões, nº 28",
             "coordenadas": [
@@ -50,7 +50,7 @@
         },
         {
             "id": 4,
-            "titulo": "Largo General Avelar Machado e Rua Montepio Abrantino",
+            "titulo": "Edifício da Sede da Sociedade da Assembleia de Abrantes",
             "ano": "1923",
             "localizacao": "Largo General Avelar Machado e Rua Montepio Abrantino",
             "coordenadas": [
@@ -67,7 +67,7 @@
         },
         {
             "id": 5,
-            "titulo": "Rua de São Pedro",
+            "titulo": "Edifício de habitação na Rua de S. Pedro",
             "ano": "1924",
             "localizacao": "Rua de S. Pedro, nº 8",
             "coordenadas": [
@@ -83,7 +83,7 @@
         },
         {
             "id": 6,
-            "titulo": "Rua Dom Afonso Henriques",
+            "titulo": "Edifício de habitação na Rua D. Afonso Henriques",
             "ano": "1924 e 1948",
             "localizacao": "Rua D. Afonso Henriques, nº 25",
             "coordenadas": [
@@ -100,7 +100,7 @@
         },
         {
             "id": 7,
-            "titulo": "Largo General Avelar Machado",
+            "titulo": "Pedestal do busto do General Avelar Machado",
             "ano": "1928",
             "localizacao": "Largo General Avelar Machado",
             "coordenadas": [
@@ -117,7 +117,7 @@
         },
         {
             "id": 8,
-            "titulo": "Rua Tenente Valadim",
+            "titulo": "Edifício de habitação na Rua Tenente Valadim",
             "ano": "1929 e 1963",
             "localizacao": "Rua Tenente Valadim, nº 3 e 5",
             "coordenadas": [
@@ -133,7 +133,7 @@
         },
         {
             "id": 9,
-            "titulo": "Rua do Arcediago",
+            "titulo": "Moradia na Rua do Arcediago",
             "ano": "1923",
             "localizacao": "Rua do Arcediago, nº 19",
             "coordenadas": [
@@ -149,7 +149,7 @@
         },
         {
             "id": 10,
-            "titulo": "Rua General Manuel António Mourato",
+            "titulo": "Edifício de habitação na Rua General Manuel António Mourato",
             "ano": "1923",
             "localizacao": "Rua General Manuel António Mourato, nº 11",
             "coordenadas": [
@@ -164,7 +164,7 @@
         },
         {
             "id": 11,
-            "titulo": "Rua José Estevão",
+            "titulo": "Edifício de habitação na Rua José Estevão",
             "ano": "1935",
             "localizacao": "Rua José Estevão, nº 20",
             "coordenadas": [
@@ -180,7 +180,7 @@
         },
         {
             "id": 12,
-            "titulo": "Rua de Santa Isabel",
+            "titulo": "Edifício de habitação na Rua de Santa Isabel",
             "ano": "1936",
             "localizacao": "Rua de Santa Isabel nº 28 e 30",
             "coordenadas": [
@@ -211,7 +211,7 @@
         },
         {
             "id": 14,
-            "titulo": "Rua Afonso Henriques",
+            "titulo": "Edifício de habitação na Rua D. Afonso Henriques",
             "ano": "1938",
             "localizacao": "Rua Afonso Henriques nº 9 a 11",
             "coordenadas": [
@@ -227,7 +227,7 @@
         },
         {
             "id": 15,
-            "titulo": "Afonso Henriques",
+            "titulo": "Garagem na Rua D. Afonso Henriques",
             "ano": "1939",
             "localizacao": "Afonso Henriques (ao lado do nº 25)",
             "coordenadas": [
@@ -242,7 +242,7 @@
         },
         {
             "id": 16,
-            "titulo": "Rua Afonso Henriques",
+            "titulo": "Edifício de habitação na Rua D. Afonso Henriques",
             "ano": "1939 e 1941",
             "localizacao": "Rua Afonso Henriques nº 13 a 15",
             "coordenadas": [
@@ -258,7 +258,7 @@
         },
         {
             "id": 17,
-            "titulo": "Rua 5 de outubro de 1910",
+            "titulo": "Edifício de habitação na Rua 5 de Outubro",
             "ano": "1940",
             "localizacao": "Rua 5 de outubro de 1910, nº 16",
             "coordenadas": [

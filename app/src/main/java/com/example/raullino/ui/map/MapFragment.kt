@@ -414,7 +414,7 @@ class MapFragment : Fragment() {
                     //mapView.overlays.removeLast()
                     // Display the new route on the map
                     road_Overlay = RoadManager.buildRoadOverlay(road,Color.BLACK, 5F)
-                        mapView.overlays.add(road_Overlay)
+                    mapView.overlays.add(road_Overlay)
                     mapView.invalidate()
                 }
             }
