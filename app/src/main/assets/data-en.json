@@ -33,22 +33,6 @@
             ]
         },
         {
-            "id": 3,
-            "titulo": "Rua da Fonte Nova, Tramagal",
-            "ano": "1923",
-            "localizacao": "Tramagal/Rua da Fonte Nova, no. 146",
-            "coordenadas": [
-                39.452866,
-                -8.248377
-            ],
-            "tipologia": "Single-family Housing",
-            "info": "In 1923 Raul Lino was commissioned to expand and alter a single-story dwelling in the town of Tramagal, with the addition of a floor and attic. In the pre-existing building, the original compartmentalization was also reformulated, and a porch was added flanking one of the flanks of the dwelling. However, it is likely that the building was not built according to the project proposed by Raul Lino.",
-            "imagens": [
-                "img/roteiro/3/rot31.jpeg",
-                "img/roteiro/3/rot32.jpeg"
-            ]
-        },
-        {
             "id": 4,
             "titulo": "Largo General Avelar Machado e Rua Montepio Abrantino",
             "ano": "1923",
@@ -270,21 +254,6 @@
             "imagens": [
                 "img/roteiro/17/rot171.JPG",
                 "img/roteiro/17/rot172.JPG"
-            ]
-        },
-        {
-            "id": 18,
-            "titulo": "Cemitério de S. Miguel do Rio Torto",
-            "ano": "1924",
-            "localizacao": "Cemitério de S. Miguel do Rio Torto, Carvalhal",
-            "coordenadas": [
-                39.417387,
-                -8.210650
-            ],
-            "tipologia": "Funeral architecture",
-            "info": "This mausoleum was erected in memory of João Augusto da Silva Martins, who died in 1924 and was a prominent figure in Carvalhal (Parish of S. Miguel do Rio Torto), where he kept in operation the Abrantes Milling Company, opened in 1903. The building, in austere style, with classical forms, consists of two bodies with different volumes: the first corresponds to a portico whose entrance is flanked by two columns, and that precedes the second body, the chapel, a space of longitudinal plan, simple and with coverage of two waters, illuminated by a window on the main facade and a gap in the opposite wall.",
-            "imagens": [
-                "img/roteiro/18/rot181.jpeg"
             ]
         }
     ]

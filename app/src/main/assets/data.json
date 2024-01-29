@@ -33,22 +33,6 @@
             ]
         },
         {
-            "id": 3,
-            "titulo": "Rua da Fonte Nova, Tramagal",
-            "ano": "1923",
-            "localizacao": "Tramagal/Rua da Fonte Nova, nº 146",
-            "coordenadas": [
-                39.452866,
-                -8.248377
-            ],
-            "tipologia": "Habitação Unifamiliar",
-            "info": "Em 1923, foi solicitado a Raul Lino a ampliação e alteração de uma habitação térrea na vila do Tramagal, com a adição de um piso e de sótão. No edifício pré-existente também foi reformulada a compartimentação original, bem como se acrescentou um alpendre que ladeia um dos flancos da habitação. No entanto, é provável que o edifício não tenha sido realizado de acordo com o projeto proposto por Raul Lino.",
-            "imagens": [
-                "img/roteiro/3/rot31.jpeg",
-                "img/roteiro/3/rot32.jpeg"
-            ]
-        },
-        {
             "id": 4,
             "titulo": "Edifício da Sede da Sociedade da Assembleia de Abrantes",
             "ano": "1923",
@@ -270,21 +254,6 @@
             "imagens": [
                 "img/roteiro/17/rot171.JPG",
                 "img/roteiro/17/rot172.JPG"
-            ]
-        },
-        {
-            "id": 18,
-            "titulo": "Cemitério de S. Miguel do Rio Torto",
-            "ano": "1924",
-            "localizacao": "Cemitério de S. Miguel do Rio Torto, Carvalhal",
-            "coordenadas": [
-                39.417387,
-                -8.210650
-            ],
-            "tipologia": "Arquitetura funerária",
-            "info": "Este mausoléu, foi erigido em memória de João Augusto da Silva Martins, falecido em 1924, que foi uma figura proeminente em Carvalhal (Freguesia de S. Miguel do Rio Torto), onde mantinha em funcionamento a Companhia de Moagem de Abrantes, inaugurada em 1903. O edifício, em estilo austero, com formas clássicas, é composto por dois corpos com volumes diferenciados: o primeiro corresponde a um pórtico cuja entrada é flanqueada por duas colunas, e que antecede o segundo corpo, da capela, espaço de planta longitudinal, simples e com cobertura de duas águas, iluminado por óculo na fachada principal e fresta no muro oposto.",
-            "imagens": [
-                "img/roteiro/18/rot181.jpeg"
             ]
         }
     ]
